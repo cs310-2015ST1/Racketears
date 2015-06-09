@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+# ruby encoding: utf-8
+WaterFountain.create(name: 'Aberdeen', lat: 49.234947, lon: -123.027254)
+WaterFountain.create(name: 'Adanac', lat: 49.275858, lon: -123.024141)
