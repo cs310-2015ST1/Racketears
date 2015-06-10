@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @water_fountain.location %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @water_fountain.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @water_fountain.lon %>
+</p>
+
+<%= link_to 'Edit', edit_water_fountain_path(@water_fountain) %> |
+<%= link_to 'Back', water_fountains_path %>

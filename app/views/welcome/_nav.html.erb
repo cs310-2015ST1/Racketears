@@ -20,6 +20,15 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Water Fountains</a></li>
             <li><a href="#">Bike Racks</a></li>
+            <li><%= link_to water_fountains_path class: 'btn btn-success' do %> 
+              Show Water Fountains Table
+                <% end %>
+            </li>
+            <li><%= link_to bike_racks_path class: 'btn btn-success' do %> 
+              Show Bike Racks Table
+                <% end %>
+            </li>
+
           </ul>
         </li>
       </ul>

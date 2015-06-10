@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WaterfountainsControllerTest < ActionController::TestCase
+class BikeRackTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

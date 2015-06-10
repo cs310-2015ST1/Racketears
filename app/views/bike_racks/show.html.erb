@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @bike_rack.address %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @bike_rack.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
+<%= link_to 'Back', bike_racks_path %>

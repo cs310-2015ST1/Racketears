@@ -1,2 +1,0 @@
-class WaterfountainsController < ApplicationController
-end

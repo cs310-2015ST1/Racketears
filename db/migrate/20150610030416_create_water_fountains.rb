@@ -1,7 +1,7 @@
 class CreateWaterFountains < ActiveRecord::Migration
   def change
     create_table :water_fountains do |t|
-      t.string :name
+      t.string :location
       t.float :lat
       t.float :lon
 

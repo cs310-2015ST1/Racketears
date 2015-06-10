@@ -1,2 +1,0 @@
-class BikeracksController < ApplicationController
-end
