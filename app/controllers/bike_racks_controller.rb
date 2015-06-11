@@ -7,6 +7,11 @@ class BikeRacksController < ApplicationController
     @bike_racks = BikeRack.all
   end
 
+  # GET /mapracks
+  def map
+    @bike_racks = BikeRack.all.to_json
+  end
+
   # GET /bike_racks/1
   # GET /bike_racks/1.json
   def show

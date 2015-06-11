@@ -1,0 +1,61 @@
+<%= render 'shared/nav' %>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		<script>
+
+function initialize(){
+  var myLatlng = new google.maps.LatLng(49.263236,-123.115028);
+  var mapOptions = {
+    zoom: 13,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  });
+
+  marker.setMap(map);
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+// function addMarker(latlon, map){
+// 	var marker = new google.map.Marker({
+// 		position: latlon,
+// 		title: 'titties'
+// 	});
+// 	marker.setMap(map);
+// }
+
+// var home = new google.maps.LatLng(49.263278, -123.090025);
+
+// addMarker(home, map);
+
+ 		</script>
+
+</head>
+
+<% content_for(:javascript) do %>
+$(function() {
+	initialize();
+});
+<%end%>
+
+<body>
+
+ <div id="map-container">
+      <div id="map-canvas"></div>
+ </div>
+
+ <%= @bike_racks %>
+
+</body>
