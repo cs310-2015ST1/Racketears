@@ -8,6 +8,8 @@
   <tr>
     <th>Address</th> 
     <th>Quantity</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
     <th>Actions</th>
   </tr>
   
@@ -16,6 +18,8 @@
     <tr>
       <td><%= bike_rack.address %></td>
       <td><%= bike_rack.quantity %></td>
+      <td><%= bike_rack.latitude %></td>
+      <td><%= bike_rack.longitude %></td>
       <td><%= link_to 'Show', bike_rack %>
         <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
         <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %></td>

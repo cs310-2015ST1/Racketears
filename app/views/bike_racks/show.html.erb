@@ -13,5 +13,15 @@
   <%= @bike_rack.quantity %>
 </p>
 
+<p>
+  <strong>Latitude:</strong>
+  <%= @bike_rack.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @bike_rack.longitude %>
+</p>
+
 <%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
 <%= link_to 'Back', bike_racks_path %>

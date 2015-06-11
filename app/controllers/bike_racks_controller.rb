@@ -9,7 +9,12 @@ class BikeRacksController < ApplicationController
 
   # GET /mapracks
   def map
-    @bike_racks = BikeRack.all.to_json
+    @bike_racks = BikeRack.all
+    @hash = Gmaps4rails.build_markers(@bike_racks) do |bike_rack, marker|
+      marker.lat bike_rack.latitude
+      marker.lng bike_rack.longitude
+      marker.infowindow bike_rack.quantity.to_s+' racks at this location'
+    end
   end
 
   # GET /bike_racks/1
@@ -75,6 +80,6 @@ class BikeRacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_rack_params
-      params.require(:bike_rack).permit(:address, :quantity)
+      params.require(:bike_rack).permit(:address, :quantity, :latitude, :longitude)
     end
 end
