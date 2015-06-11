@@ -1,3 +1,22 @@
 // Place all the styles related to the WaterFountains controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {
+    position: relative;
+    right: -10px;
+}
+th, td {
+    padding: 1px;
+    text-align: center;
+}
+th, tr:nth-child(even) {
+    background-color: #eee;
+}
+th, tr:nth-child(odd) {
+   background-color:#fff;
+}
+th, td td {
+    background-color: black;
+    color: white;
+}
