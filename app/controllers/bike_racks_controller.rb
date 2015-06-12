@@ -1,9 +1,21 @@
+require 'open-uri'
+require 'csv'
 class BikeRacksController < ApplicationController
   before_action :set_bike_rack, only: [:show, :edit, :update, :destroy]
-  helper_method :parse, :imgStr
+  helper_method :parse, :imgStr, :parser
 
-  # GET /bike_racks
-  # GET /bike_racks.json
+  def parser
+  brurl = "ftp://webftp.vancouver.ca/opendata/bike_rack/BikeRackData.csv"
+  brfile = open(brurl)
+  brstring = brfile.read
+  brArray = CSV.parse(brstring)
+  newbrArray = brArray.drop(1)
+  for i in newbrArray
+    BikeRack.create(address: i[0] + " " + i[1] + ", " + "Vancouver" + " BC", quantity: i[5])
+  end
+  end
+
+
   def index
     @bike_racks = BikeRack.all
   end
