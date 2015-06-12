@@ -42,15 +42,17 @@ p, img  {
 
 
 <% parseArr = parse(@bike_rack) %>
-<% temp = imgStr(parseArr) %>
+<% html = imgStr(parseArr) %>
 
-<img src=<%= temp %> alt="Lamp" width="150" height="150">
+<% img_height = 150 %>
+
+<img src=<%= html %> alt="Lamp" width=<%= img_height.to_s %> height=<%= img_height.to_s %> >
 
 </body>
 </html>
 
-
-<DIV style="position: absolute; top:230px; left:10px; width:200px; height:25px">
+<!-- add 200 to height for positioning -->
+<DIV style="position: absolute; top:350px; left:10px; width:200px; height:25px">
 
 <%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
 <%= link_to 'Back', bike_racks_path %>

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= render "welcome/nav"%>
 
 <style>
 p, img  {
@@ -30,14 +30,16 @@ p, img  {
 <body>
 
   <% arr = parse(@water_fountain) %>
-  <% temp = imgStr(arr) %>
+  <% html = imgStr(arr) %>
 
-  <img src=<%= temp %> alt="Lamp" width="150" height="150">
+<% img_height = 150 %>
+
+<img src=<%= html %> alt="Lamp" width=<%= img_height.to_s %> height=<%= img_height.to_s %> >
 
 </body>
 </html>
 
-<DIV style="position: absolute; top:260px; left:10px; width:200px; height:25px">
+<DIV style="position: absolute; top:320px; left:10px; width:200px; height:25px">
 <%= link_to 'Edit', edit_water_fountain_path(@water_fountain) %> |
 <%= link_to 'Back', water_fountains_path %>
 </DIV>

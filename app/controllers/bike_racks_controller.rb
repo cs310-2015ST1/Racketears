@@ -75,13 +75,24 @@ class BikeRacksController < ApplicationController
 
 
   def parse(br)
-    toParse = br.address
-    parseArr = toParse.split
+    tempLat = br.latitude
+    tempLon = br.longitude
+    arr = [tempLat, tempLon]
+    arr
   end
 
   def imgStr(arr)
-    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&zoom=14&size=300x300&markers=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&sensor=false"
+    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
   end
+
+  # def parse(br)
+    # toParse = br.address
+    # parseArr = toParse.split
+  # end
+
+  # def imgStr(arr)
+    # "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&zoom=14&size=300x300&markers=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&sensor=false"
+  # end
 
 
   private

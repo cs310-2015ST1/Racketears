@@ -71,9 +71,9 @@ class WaterFountainsController < ApplicationController
     end
   end
 
-  def parse(br)
-    tempLat = br.lat
-    tempLon = br.lon
+  def parse(wf)
+    tempLat = wf.lat
+    tempLon = wf.lon
     arr = [tempLat, tempLon]
     arr
   end
