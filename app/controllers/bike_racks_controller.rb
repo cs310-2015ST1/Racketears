@@ -1,8 +1,20 @@
+require 'open-uri'
+require 'csv'
 class BikeRacksController < ApplicationController
   before_action :set_bike_rack, only: [:show, :edit, :update, :destroy]
+  helper_method :parse, :imgStr, :parser
 
-  # GET /bike_racks
-  # GET /bike_racks.json
+  def parser
+  brurl = "ftp://webftp.vancouver.ca/opendata/bike_rack/BikeRackData.csv"
+  brfile = open(brurl)
+  brstring = brfile.read
+  brArray = CSV.parse(brstring)
+  newbrArray = brArray.drop(1)
+  for i in newbrArray
+    BikeRack.create(address: i[0] + " " + i[1], quantity: i[5])
+  end
+
+
   def index
     @bike_racks = BikeRack.all
     #distance = BikeRack.distance_to([43.9,-98.6])
@@ -31,6 +43,7 @@ class BikeRacksController < ApplicationController
   # GET /bike_racks/1
   # GET /bike_racks/1.json
   def show
+
   end
 
   # GET /bike_racks/new
@@ -83,6 +96,19 @@ class BikeRacksController < ApplicationController
   end
 
 
+<<<<<<< HEAD
+=======
+  def parse(br)
+    toParse = br.address
+    parseArr = toParse.split
+  end
+
+  def imgStr(arr)
+    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&zoom=14&size=300x300&markers=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&sensor=false"
+  end
+
+
+>>>>>>> master
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bike_rack

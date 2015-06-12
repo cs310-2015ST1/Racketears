@@ -1,5 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+
+<style>
+p, img  {
+    position: relative;
+    right: -10px;
+}
+</style>
+
+
 <p>
   <strong>Location:</strong>
   <%= @water_fountain.location %>
@@ -15,5 +24,20 @@
   <%= @water_fountain.lon %>
 </p>
 
+
+
+<html>
+<body>
+
+  <% arr = parse(@water_fountain) %>
+  <% temp = imgStr(arr) %>
+
+  <img src=<%= temp %> alt="Lamp" width="150" height="150">
+
+</body>
+</html>
+
+<DIV style="position: absolute; top:260px; left:10px; width:200px; height:25px">
 <%= link_to 'Edit', edit_water_fountain_path(@water_fountain) %> |
 <%= link_to 'Back', water_fountains_path %>
+</DIV>

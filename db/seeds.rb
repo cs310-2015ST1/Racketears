@@ -8,8 +8,8 @@
 
 
 # ruby encoding: utf-8
-WaterFountain.create(location: 'Aberdeen', lat: 49.234947, lon: -123.027254)
-WaterFountain.create(location: 'Adanac', lat: 49.275858, lon: -123.024141)
+#WaterFountain.create(location: 'Aberdeen', lat: 49.234947, lon: -123.027254)
+#WaterFountain.create(location: 'Adanac', lat: 49.275858, lon: -123.024141)
 
-BikeRack.create(address: "300 Abbot St", quantity: 5)
-BikeRack.create(address: '400 Burrard St', quantity: 10)
+#BikeRack.create(address: "300 Abbot St", quantity: 5)
+#BikeRack.create(address: '400 Burrard St', quantity: 10)
