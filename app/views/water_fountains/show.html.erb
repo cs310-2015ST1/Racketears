@@ -29,7 +29,10 @@ p, img  {
 <html>
 <body>
 
-<img src="https://maps.googleapis.com/maps/api/staticmap?center=2366+Main+Mall,BC&zoom=14&size=300x300&markers=2366+Main+Mall,BC&sensor=false" alt="Lamp" width="150" height="150">
+  <% arr = parse(@water_fountain) %>
+  <% temp = imgStr(arr) %>
+
+  <img src=<%= temp %> alt="Lamp" width="150" height="150">
 
 </body>
 </html>

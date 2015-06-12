@@ -1,5 +1,6 @@
 class BikeRacksController < ApplicationController
   before_action :set_bike_rack, only: [:show, :edit, :update, :destroy]
+  helper_method :parse, :imgStr
 
   # GET /bike_racks
   # GET /bike_racks.json
@@ -10,6 +11,7 @@ class BikeRacksController < ApplicationController
   # GET /bike_racks/1
   # GET /bike_racks/1.json
   def show
+
   end
 
   # GET /bike_racks/new
@@ -60,6 +62,17 @@ class BikeRacksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def parse(br)
+    toParse = br.address
+    parseArr = toParse.split
+  end
+
+  def imgStr(arr)
+    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&zoom=14&size=300x300&markers=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&sensor=false"
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
