@@ -34,3 +34,14 @@ th, td td {
    height: 384px;
    width: 100%;
  }
+
+ #panel {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }

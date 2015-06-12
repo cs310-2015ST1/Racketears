@@ -5,6 +5,8 @@ class BikeRacksController < ApplicationController
   # GET /bike_racks.json
   def index
     @bike_racks = BikeRack.all
+    #distance = BikeRack.distance_to([43.9,-98.6])
+
   end
 
   # GET /mapracks
@@ -15,6 +17,15 @@ class BikeRacksController < ApplicationController
       marker.lng bike_rack.longitude
       marker.infowindow bike_rack.quantity.to_s+' racks at this location'
     end
+    @water_fountains =  WaterFountain.all
+    @hashw = Gmaps4rails.build_markers(@water_fountains) do |water_fountain, marker|
+      marker.lat water_fountain.lat
+      marker.lng water_fountain.lon
+    end
+  end
+
+  def heatmap
+    @bike_racks = BikeRack.all
   end
 
   # GET /bike_racks/1
