@@ -11,6 +11,11 @@ Rails.application.routes.draw do
 
   get 'bikeracks' => 'bike_racks#index'
 
+  get 'mapracks' => 'bike_racks#map'
+
+  get 'fountainsmap' => 'water_fountains#map'
+
+
 
 
   # Example of regular route:

@@ -1,1 +1,1 @@
-json.extract! @bike_rack, :id, :address, :quantity, :created_at, :updated_at
+json.extract! @bike_rack, :id, :address, :quantity, :latitude, :longitude, :created_at, :updated_at

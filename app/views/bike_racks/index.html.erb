@@ -1,28 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
-<style>
-h1 {
-    position: relative;
-    right: -10px;
-}
-th, td {
-    padding: 1px;
-    text-align: center;
-}
-th, tr:nth-child(even) {
-    background-color: #eee;
-}
-th, tr:nth-child(odd) {
-   background-color:#fff;
-}
-th, td td {
-    background-color: black;
-    color: white;
-}
-</style>
-
-
+<%= render 'shared/nav'%>
 
 <h1>Listing Bike Racks</h1>
 
@@ -30,6 +8,8 @@ th, td td {
   <tr>
     <th>Address</th> 
     <th>Quantity</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
     <th>Actions</th>
   </tr>
   
@@ -38,6 +18,8 @@ th, td td {
     <tr>
       <td><%= bike_rack.address %></td>
       <td><%= bike_rack.quantity %></td>
+      <td><%= bike_rack.latitude %></td>
+      <td><%= bike_rack.longitude %></td>
       <td><%= link_to 'Show', bike_rack %>
         <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
         <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
