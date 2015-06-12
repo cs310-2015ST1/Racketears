@@ -3,6 +3,16 @@
 <p id="notice"><%= notice %></p>
 <%= render "welcome/nav"%>
 
+<style>
+p, img  {
+    position: relative;
+    right: -10px;
+}
+</style>
+
+
+
+
 <p>
   <strong>Address:</strong>
   <%= @bike_rack.address %>
@@ -12,6 +22,7 @@
   <strong>Quantity:</strong>
   <%= @bike_rack.quantity %>
 </p>
+
 
 <p>
   <strong>Latitude:</strong>
@@ -23,5 +34,27 @@
   <%= @bike_rack.longitude %>
 </p>
 
+
+
+
+<html>
+<body>
+
+
+<% parseArr = parse(@bike_rack) %>
+<% temp = imgStr(parseArr) %>
+
+<img src=<%= temp %> alt="Lamp" width="150" height="150">
+
+</body>
+</html>
+
+
+<DIV style="position: absolute; top:230px; left:10px; width:200px; height:25px">
+
 <%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
 <%= link_to 'Back', bike_racks_path %>
+</DIV>
+
+
+

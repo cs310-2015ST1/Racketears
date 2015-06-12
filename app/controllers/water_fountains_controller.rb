@@ -1,5 +1,6 @@
 class WaterFountainsController < ApplicationController
   before_action :set_water_fountain, only: [:show, :edit, :update, :destroy]
+  helper_method :parse, :imgStr
 
   # GET /water_fountains
   # GET /water_fountains.json
@@ -69,6 +70,18 @@ class WaterFountainsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def parse(br)
+    tempLat = br.lat
+    tempLon = br.lon
+    arr = [tempLat, tempLon]
+    arr
+  end
+
+  def imgStr(arr)
+    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
