@@ -10,9 +10,13 @@ class BikeRacksController < ApplicationController
   brstring = brfile.read
   brArray = CSV.parse(brstring)
   newbrArray = brArray.drop(1)
-  for i in newbrArray
-    BikeRack.create(address: i[0] + " " + i[1] + ", " + "Vancouver" + " BC", quantity: i[5])
-  end
+   (0...10).each do |i|
+ temp = newbrArray[i]
+  BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: i[5])
+end
+#  for i in newbrArray
+#    BikeRack.create(address: i[0] + " " + i[1] + ", " + "Vancouver" + " BC", quantity: i[5])
+#  end
   end
 
 
