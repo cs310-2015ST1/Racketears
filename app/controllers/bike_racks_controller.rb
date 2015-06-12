@@ -22,6 +22,16 @@ class BikeRacksController < ApplicationController
     @bike_racks = BikeRack.all
   end
 
+  # GET /mapracks
+  def map
+    @bike_racks = BikeRack.all
+    @hash = Gmaps4rails.build_markers(@bike_racks) do |bike_rack, marker|
+      marker.lat bike_rack.latitude
+      marker.lng bike_rack.longitude
+      marker.infowindow bike_rack.quantity.to_s+' racks at this location'
+    end
+  end
+
   # GET /bike_racks/1
   # GET /bike_racks/1.json
   def show
@@ -79,13 +89,24 @@ class BikeRacksController < ApplicationController
 
 
   def parse(br)
-    toParse = br.address
-    parseArr = toParse.split
+    tempLat = br.latitude
+    tempLon = br.longitude
+    arr = [tempLat, tempLon]
+    arr
   end
 
   def imgStr(arr)
-    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&zoom=14&size=300x300&markers=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&sensor=false"
+    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
   end
+
+  # def parse(br)
+    # toParse = br.address
+    # parseArr = toParse.split
+  # end
+
+  # def imgStr(arr)
+    # "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&zoom=14&size=300x300&markers=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&sensor=false"
+  # end
 
 
   private
@@ -96,6 +117,6 @@ class BikeRacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_rack_params
-      params.require(:bike_rack).permit(:address, :quantity)
+      params.require(:bike_rack).permit(:address, :quantity, :latitude, :longitude)
     end
 end

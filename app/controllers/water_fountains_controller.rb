@@ -35,6 +35,15 @@ end
     @water_fountains = WaterFountain.all
   end
 
+  def map 
+    @water_fountains = WaterFountain.all
+    @hash = Gmaps4rails.build_markers(@water_fountains) do |water_fountain, marker|
+      marker.lat water_fountain.lat
+      marker.lng water_fountain.lon
+      marker.infowindow water_fountain.location+' park'
+      end
+  end
+
   # GET /water_fountains/1
   # GET /water_fountains/1.json
   def show
@@ -89,9 +98,9 @@ end
     end
   end
 
-  def parse(br)
-    tempLat = br.lat
-    tempLon = br.lon
+  def parse(wf)
+    tempLat = wf.lat
+    tempLon = wf.lon
     arr = [tempLat, tempLon]
     arr
   end
