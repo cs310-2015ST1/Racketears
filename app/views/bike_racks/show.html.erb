@@ -1,7 +1,5 @@
-
-
 <p id="notice"><%= notice %></p>
-<%= render "welcome/nav"%>
+<%= render "shared/nav"%>
 
 <style>
 p, img  {
@@ -9,8 +7,6 @@ p, img  {
     right: -10px;
 }
 </style>
-
-
 
 
 <p>
@@ -23,7 +19,7 @@ p, img  {
   <%= @bike_rack.quantity %>
 </p>
 
-<<<<<<< HEAD
+
 <p>
   <strong>Latitude:</strong>
   <%= @bike_rack.latitude %>
@@ -34,7 +30,7 @@ p, img  {
   <%= @bike_rack.longitude %>
 </p>
 
-=======
+
 
 
 <html>
@@ -50,11 +46,10 @@ p, img  {
 </html>
 
 
-<DIV style="position: absolute; top:230px; left:10px; width:200px; height:25px">
->>>>>>> master
+<div style="position: absolute; top:230px; left:10px; width:200px; height:25px">
 <%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
 <%= link_to 'Back', bike_racks_path %>
-</DIV>
+</div>
 
 
 

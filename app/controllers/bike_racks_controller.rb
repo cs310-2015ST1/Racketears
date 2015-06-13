@@ -10,14 +10,16 @@ class BikeRacksController < ApplicationController
   brstring = brfile.read
   brArray = CSV.parse(brstring)
   newbrArray = brArray.drop(1)
-  for i in newbrArray
-    BikeRack.create(address: i[0] + " " + i[1], quantity: i[5])
+  (0..5).each do |i|
+    newbrArray[i]
+    BikeRack.create(address: newbrArray[i][0] + " " + newbrArray[i][1]+" Vancouver BC ", quantity: newbrArray[i][5])
   end
+end
 
+  helper_method :parser
 
   def index
     @bike_racks = BikeRack.all
-    #distance = BikeRack.distance_to([43.9,-98.6])
 
   end
 
@@ -96,8 +98,7 @@ class BikeRacksController < ApplicationController
   end
 
 
-<<<<<<< HEAD
-=======
+
   def parse(br)
     toParse = br.address
     parseArr = toParse.split
@@ -108,7 +109,7 @@ class BikeRacksController < ApplicationController
   end
 
 
->>>>>>> master
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bike_rack
