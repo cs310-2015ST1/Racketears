@@ -15,15 +15,15 @@ class BikeRacksController < ApplicationController
      sleep(0.2)   # to slow down the loop
      temp = newbrArray[i]
      BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
+   end
  # for i in newbrArray
    # BikeRack.create(address: i[0] + " " + i[1] + ", " + "Vancouver" + " BC", quantity: i[5])
  # end
 
    redirect_to bike_racks_path
-  end
 end
 
-  helper_method :parser
+
 
   def index
     @bike_racks = BikeRack.all
