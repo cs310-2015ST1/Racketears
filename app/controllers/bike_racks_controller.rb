@@ -98,7 +98,7 @@ class BikeRacksController < ApplicationController
     arr = [tempLat, tempLon]
     arr
   end
-
+ 
   def imgStr(arr)
     "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
   end
