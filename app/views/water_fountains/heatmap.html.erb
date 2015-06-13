@@ -11,11 +11,11 @@
 
 <script type="text/javascript">
 var bikeRacks = [];
-var obj = (<%=raw  @bike_racks.to_json %>);
+var obj = (<%=raw  @water_fountains.to_json %>);
 
 for (var i = 0; i < obj.length; i++) {
     var data = obj[i];
-    bikeRacks.push(new google.maps.LatLng(data.latitude, data.longitude));
+    bikeRacks.push(new google.maps.LatLng(data.lat, data.lon));
 }
 
 function initialize() {

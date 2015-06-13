@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   get 'fountainsmap' => 'water_fountains#map'
 
-  get 'heatmap' => 'bike_racks#heatmap'
+  get 'bikeracks/heatmap' => 'bike_racks#heatmap'
+
+  get 'waterfountains/heatmap' => 'water_fountains#heatmap'
 
 
 
