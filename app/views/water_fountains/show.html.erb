@@ -1,5 +1,7 @@
+<%= render 'shared/nav'%>
+
 <p id="notice"><%= notice %></p>
-<%= render "welcome/nav"%>
+
 
 <style>
 p, img  {
@@ -11,7 +13,7 @@ p, img  {
 
 <p>
   <strong>Location:</strong>
-  <%= @water_fountain.location %>
+  <%= shortenLocation(@water_fountain.location) %>
 </p>
 
 <p>
@@ -29,8 +31,8 @@ p, img  {
 <html>
 <body>
 
-  <% arr = parse(@water_fountain) %>
-  <% html = imgStr(arr) %>
+  <% latLonArr = parseLatLon(@water_fountain) %>
+  <% html = imgStr(latLonArr) %>
 
 <% img_height = 150 %>
 

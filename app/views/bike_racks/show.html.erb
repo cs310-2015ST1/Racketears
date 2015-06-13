@@ -1,7 +1,7 @@
-
+<%= render 'shared/nav'%>
 
 <p id="notice"><%= notice %></p>
-<%= render "welcome/nav"%>
+
 
 <style>
 p, img  {
@@ -15,7 +15,7 @@ p, img  {
 
 <p>
   <strong>Address:</strong>
-  <%= @bike_rack.address %>
+  <%= shortenLocation(@bike_rack.address) %>
 </p>
 
 <p>
@@ -41,8 +41,8 @@ p, img  {
 <body>
 
 
-<% parseArr = parse(@bike_rack) %>
-<% html = imgStr(parseArr) %>
+<% latLonArr = parseLatLon(@bike_rack) %>
+<% html = imgStr(latLonArr) %>
 
 <% img_height = 150 %>
 

@@ -2,10 +2,10 @@ require 'open-uri'
 require 'csv'
 class WaterFountainsController < ApplicationController
   before_action :set_water_fountain, only: [:show, :edit, :update, :destroy]
-  helper_method :parse, :imgStr, :parser
+  helper_method :parseLatLon, :imgStr, :populateWFData, :shortenLocation
 
 
-  def parser
+  def populateWFData
     wfurl = "ftp://webftp.vancouver.ca/OpenData/csv/drinking_fountains.csv"
     wffile = open(wfurl) 
     wfstring = wffile.read
@@ -98,7 +98,7 @@ end
     end
   end
 
-  def parse(wf)
+  def parseLatLon(wf)
     tempLat = wf.lat
     tempLon = wf.lon
     arr = [tempLat, tempLon]
@@ -109,6 +109,9 @@ end
     "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
   end
 
+  def shortenLocation(string)
+    string.partition(":").last
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
