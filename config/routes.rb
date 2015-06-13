@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   post 'bikeracks/populateBRData' => 'bike_racks#populateBRData'
 
+  post 'waterfountains/populateWFData' => 'water_fountains#populateWFData'
+
   get 'mapracks' => 'bike_racks#map'
 
   get 'fountainsmap' => 'water_fountains#map'
