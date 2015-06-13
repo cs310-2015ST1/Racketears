@@ -22,7 +22,7 @@ th, td td {
 }
 
 #map-container {
-   height: 400px;
+   height: 500px;
    border-radius: 16px 16px;
    border-color: #fff;
    border-style: solid;
@@ -31,6 +31,28 @@ th, td td {
    border-width: 7px;
  }
  #map-canvas {
-   height: 384px;
+   height: 484px;
    width: 100%;
  }
+
+ #panel {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+
+#heat_panel {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }

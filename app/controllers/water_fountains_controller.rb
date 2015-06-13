@@ -46,6 +46,11 @@ end
       end
   end
 
+  def heatmap
+    @water_fountains = WaterFountain.all
+  end
+
+
   # GET /water_fountains/1
   # GET /water_fountains/1.json
   def show

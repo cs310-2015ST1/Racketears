@@ -5,16 +5,47 @@
 
 
 <div id="map-container">
-  <div id="map"></div>
+  	<div id="map"></div>
+	<!-- <div id="panel">
+		  <input onclick="showRacks();" type=button value="Show Bike Racks">
+		  <input onclick="clearRacks();" type=button value="Hide Bike Racks">
+		  <input onclick="showWaterFountains();" type=button value="Show Water Fountains">
+		  <input onclick="clearWaterFountains();" type=button value="Delete Water Fountains">
+	</div> -->
 </div>
 
-
-
-<script type='text/javascript'>
+<script>
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
+  racks = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(racks);
   handler.fitMapToBounds();
 });
+
 </script>
+
+<script type="text/javascript">
+
+function showRacks(){
+	racks = handler.addMarkers(<%=raw @hash.to_json %>);
+};
+
+function clearRacks(){
+	markers = handler.removeMarkers(racks);
+};
+
+function showWaterFountains(){
+	fountainMarkers = handler.addMarkers(<%=raw @hashw.to_json %>);
+};
+
+function clearWaterFountains(){
+	fountainMarkers = handler.removeMarkers(fountainMarkers);
+}
+
+</script>
+
+
+
+
+
+

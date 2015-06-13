@@ -15,19 +15,19 @@ class BikeRacksController < ApplicationController
      sleep(0.2)   # to slow down the loop
      temp = newbrArray[i]
      BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
-   end
-
-
  # for i in newbrArray
    # BikeRack.create(address: i[0] + " " + i[1] + ", " + "Vancouver" + " BC", quantity: i[5])
  # end
 
    redirect_to bike_racks_path
   end
+end
 
+  helper_method :parser
 
   def index
     @bike_racks = BikeRack.all
+
   end
 
   # GET /mapracks
@@ -38,6 +38,15 @@ class BikeRacksController < ApplicationController
       marker.lng bike_rack.longitude
       marker.infowindow bike_rack.quantity.to_s+' racks at this location'
     end
+    @water_fountains =  WaterFountain.all
+    @hashw = Gmaps4rails.build_markers(@water_fountains) do |water_fountain, marker|
+      marker.lat water_fountain.lat
+      marker.lng water_fountain.lon
+    end
+  end
+
+  def heatmap
+    @bike_racks = BikeRack.all
   end
 
   # GET /bike_racks/1
@@ -94,6 +103,7 @@ class BikeRacksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   def dummy
   end
