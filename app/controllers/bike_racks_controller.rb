@@ -3,7 +3,7 @@ require 'csv'
 class BikeRacksController < ApplicationController
   before_action :set_bike_rack, only: [:show, :edit, :update, :destroy]
   helper_method :parseLatLon, :imgStr, :populateBRData, :shortenLocation
-
+ 
   def populateBRData
   brurl = "ftp://webftp.vancouver.ca/opendata/bike_rack/BikeRackData.csv"
   brfile = open(brurl)
