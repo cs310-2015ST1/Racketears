@@ -1,6 +1,35 @@
+require 'open-uri'
+require 'csv'
 class WaterFountainsController < ApplicationController
   before_action :set_water_fountain, only: [:show, :edit, :update, :destroy]
-  helper_method :parse, :imgStr
+  helper_method :parseLatLon, :imgStr, :populateWFData, :shortenLocation
+
+
+  def populateWFData
+    wfurl = "ftp://webftp.vancouver.ca/OpenData/csv/drinking_fountains.csv"
+    wffile = open(wfurl) 
+    wfstring = wffile.read
+    csvArray = CSV.parse(wfstring)
+    newArray = csvArray.drop(1)
+    for i in newArray
+      WaterFountain.create(location: i[2].force_encoding('iso-8859-1').encode('utf-8'), lat: i[0].to_f, lon: i[1].to_f)
+    end
+#arrayIndex = newArray.size - 1
+# 227..228 doesnt work
+# 228..229 doesnt work 
+# all others work therefore it is the element 228 which is 230 in file
+#(0...228).each do |i|
+# temp = newArray[i]
+#  WaterFountain.create(location: temp[2], lat: temp[0].to_f, lon: temp[1].to_f)
+#end
+#(229..233).each do |i|
+# temp = newArray[i]
+#  WaterFountain.create(location: temp[2], lat: temp[0].to_f, lon: temp[1].to_f)
+#end
+
+    redirect_to waterfountains_path
+end
+
 
   # GET /water_fountains
   # GET /water_fountains.json
@@ -71,7 +100,7 @@ class WaterFountainsController < ApplicationController
     end
   end
 
-  def parse(wf)
+  def parseLatLon(wf)
     tempLat = wf.lat
     tempLon = wf.lon
     arr = [tempLat, tempLon]
@@ -82,6 +111,9 @@ class WaterFountainsController < ApplicationController
     "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
   end
 
+  def shortenLocation(string)
+    string.partition(":").last
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

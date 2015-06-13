@@ -1,9 +1,31 @@
+require 'open-uri'
+require 'csv'
 class BikeRacksController < ApplicationController
   before_action :set_bike_rack, only: [:show, :edit, :update, :destroy]
-  helper_method :parse, :imgStr
+  helper_method :parseLatLon, :imgStr, :populateBRData, :shortenLocation
+ 
+  def populateBRData
+   
+  brurl = "ftp://webftp.vancouver.ca/opendata/bike_rack/BikeRackData.csv"
+  brfile = open(brurl)
+  brstring = brfile.read
+  brArray = CSV.parse(brstring)
+  newbrArray = brArray.drop(1)
+   (0...30).each do |i|
+     sleep(0.2)   # to slow down the loop
+     temp = newbrArray[i]
+     BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
+   end
 
-  # GET /bike_racks
-  # GET /bike_racks.json
+
+ # for i in newbrArray
+   # BikeRack.create(address: i[0] + " " + i[1] + ", " + "Vancouver" + " BC", quantity: i[5])
+ # end
+
+   redirect_to bike_racks_path
+  end
+
+
   def index
     @bike_racks = BikeRack.all
   end
@@ -73,27 +95,24 @@ class BikeRacksController < ApplicationController
     end
   end
 
+  def dummy
+  end
 
-  def parse(br)
+
+  def parseLatLon(br)
     tempLat = br.latitude
     tempLon = br.longitude
     arr = [tempLat, tempLon]
     arr
   end
-
+ 
   def imgStr(arr)
     "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
   end
 
-  # def parse(br)
-    # toParse = br.address
-    # parseArr = toParse.split
-  # end
-
-  # def imgStr(arr)
-    # "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&zoom=14&size=300x300&markers=" + arr.first.to_s + "+" + arr.second.to_s + "+" + arr.last.to_s + ",BC&sensor=false"
-  # end
-
+  def shortenLocation(string)
+    string.partition(",").first
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
 
 <%= render 'shared/nav'%>
 
+<p id="notice"><%= notice %></p>
+
 <h1>Listing Water Fountains</h1>
+
+
 
 <table border="1" style="width:50%; margin-left:1%">
   <tr>
@@ -15,7 +18,7 @@
   <tbody>
     <% @water_fountains.each do |water_fountain| %>
       <tr>
-        <td><%= water_fountain.location %></td>
+        <td><%= shortenLocation(water_fountain.location) %></td>
         <td><%= water_fountain.lat %></td>
         <td><%= water_fountain.lon %></td>
         <td><%= link_to 'Show', water_fountain %>
@@ -35,3 +38,5 @@
 <%= link_to "<< Back to Home", root_path %>
 
 <%= link_to 'New Water fountain', new_water_fountain_path %>
+
+<%= button_to "Populate", waterfountains_populateWFData_path %>

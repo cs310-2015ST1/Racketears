@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
 
 <%= render 'shared/nav'%>
 
+<p id="notice"><%= notice %></p>
+
 <h1>Listing Bike Racks</h1>
+
+
 
 <table border="1" style="width:50%; margin-left:1%">
   <tr>
@@ -16,7 +19,7 @@
   <tbody>
     <% @bike_racks.each do |bike_rack| %>
     <tr>
-      <td><%= bike_rack.address %></td>
+      <td><%= shortenLocation(bike_rack.address) %></td>
       <td><%= bike_rack.quantity %></td>
       <td><%= bike_rack.latitude %></td>
       <td><%= bike_rack.longitude %></td>
@@ -30,8 +33,13 @@
 
 </table>
 
+
+
 <br>
 
 <%= link_to "<< Back to Home", root_path %>
 
 <%= link_to 'New Bike rack', new_bike_rack_path %>
+
+<%= button_to "Populate", bikeracks_populateBRData_path %>
+
