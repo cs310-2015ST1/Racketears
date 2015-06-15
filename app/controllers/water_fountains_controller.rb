@@ -2,7 +2,7 @@ require 'open-uri'
 require 'csv'
 class WaterFountainsController < ApplicationController
   before_action :set_water_fountain, only: [:show, :edit, :update, :destroy]
-  helper_method :parseLatLon, :imgStr, :populateWFData, :shortenLocation
+  helper_method :populateWFData
 
 
   def populateWFData
