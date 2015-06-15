@@ -13,7 +13,7 @@ p, img  {
 
 <p>
   <strong>Address:</strong>
-  <%= shortenLocation(@bike_rack.address) %>
+  <%= BikeRack.shortenLocation(@bike_rack.address) %>
 </p>
 
 <p>
@@ -39,8 +39,8 @@ p, img  {
 <body>
 
 
-<% latLonArr = parseLatLon(@bike_rack) %>
-<% html = imgStr(latLonArr) %>
+<% latLonArr = BikeRack.parseLatLon(@bike_rack) %>
+<% html = BikeRack.imgStr(latLonArr) %>
 
 <% img_height = 150 %>
 

@@ -19,7 +19,7 @@
   <tbody>
     <% @bike_racks.each do |bike_rack| %>
     <tr>
-      <td><%= shortenLocation(bike_rack.address) %></td>
+      <td><%= BikeRack.shortenLocation(bike_rack.address) %></td>
       <td><%= bike_rack.quantity %></td>
       <td><%= bike_rack.latitude %></td>
       <td><%= bike_rack.longitude %></td>

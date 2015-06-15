@@ -105,25 +105,6 @@ end
   end
 
 
-  def dummy
-  end
-
-
-  def parseLatLon(br)
-    tempLat = br.latitude
-    tempLon = br.longitude
-    arr = [tempLat, tempLon]
-    arr
-  end
- 
-  def imgStr(arr)
-    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
-  end
-
-  def shortenLocation(string)
-    string.partition(",").first
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bike_rack
