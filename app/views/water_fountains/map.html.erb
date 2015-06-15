@@ -58,16 +58,22 @@ function computeDistance(pt1, pt2){
     if (status == google.maps.GeocoderStatus.OK) {
     	if(myBounds.contains(results[0].geometry.location)){
 	      map.setCenter(results[0].geometry.location);
+	      
+	      var counter = 0;
 
 	      for(i = 0; i < wf.length; i++) {
 	      	var fountain = wf[i];
 	      	var fountainLatLng = new google.maps.LatLng(fountain.lat, fountain.lon);
-	      	if(computeDistance(results[0].geometry.location, fountainLatLng) < 1000){
+	      	if(computeDistance(results[0].geometry.location, fountainLatLng) < 100){
+	      	  counter++;
 	      		var marker = new google.maps.Marker({
 	      			map: map,
 	      			position: fountainLatLng, 
 	      		});
 	      	}
+	      }
+	      if(counter == 0){
+	        alert("No water fountains in this location");
 	      }
 
 	  } else {
