@@ -39,11 +39,6 @@ end
 
   def map 
     @water_fountains = WaterFountain.all
-    @hash = Gmaps4rails.build_markers(@water_fountains) do |water_fountain, marker|
-      marker.lat water_fountain.lat
-      marker.lng water_fountain.lon
-      marker.infowindow water_fountain.location+' park'
-      end
   end
 
   def heatmap
