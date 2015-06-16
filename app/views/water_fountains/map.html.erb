@@ -65,18 +65,20 @@ function computeDistance(pt1, pt2){
 
 	      for(i = 0; i < wf.length; i++) {
 	      	var fountain = wf[i];
-          var fountainlocation = fountain.location;
+          var str = fountain.location;
+          var fountainlocation = str.substring(str.indexOf(":") + 1);
 	      	var fountainLatLng = new google.maps.LatLng(fountain.lat, fountain.lon);
 	      	if(computeDistance(results[0].geometry.location, fountainLatLng) < radius){
 	      	  counter++;
 	      		var marker = new google.maps.Marker({
 	      			map: map,
 	      			position: fountainLatLng,
-              info: fountainlocation 
+              info: fountainlocation
 	      		});
 
             google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent(this.info);
+              infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
+                '<row> <button onclick="myFunction()">Favourite</button> <button onclick="myFunction()">Tweet</button></row>');
               infowindow.open(map, this);
             });
 	      	}
