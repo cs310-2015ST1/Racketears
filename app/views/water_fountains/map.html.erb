@@ -25,11 +25,12 @@
 <div id="map-container">
   <div id="map"></div>
 </div>
+<input onclick="DeleteMarkers();" type=button value="Delete Markers">
 
 <script>
 var geocoder;
 var map;
-var waterFountains = [];
+var markers = [];
 var wf = (<%=raw  @water_fountains.to_json %>);
 var myLatLng = new google.maps.LatLng(49.279621, -123.125496);
 var myBounds = new google.maps.LatLngBounds(
@@ -43,14 +44,26 @@ function initialize() {
     center: myLatLng,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
+
+ // google.maps.event.addListener(map, 'click', function(event);
 }
 
 function computeDistance(pt1, pt2){
 	return google.maps.geometry.spherical.computeDistanceBetween(pt1, pt2);
 };
 
+// Deletes all markers in the array by removing references to them.
+  function deleteMarkers() {
+        //Loop through all the markers and remove
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+    };
+
 
   function codeAddress() {
+    deleteMarkers();
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -69,6 +82,7 @@ function computeDistance(pt1, pt2){
 	      			map: map,
 	      			position: fountainLatLng, 
 	      		});
+            markers.push(marker);
 	      	}
 	      }
 	      if(counter == 0){
