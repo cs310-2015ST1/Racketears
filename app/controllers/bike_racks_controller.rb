@@ -30,19 +30,9 @@ end
 
   end
 
-  # GET /mapracks
+  # first step
   def map
-    @bike_racks = BikeRack.all
-    @hash = Gmaps4rails.build_markers(@bike_racks) do |bike_rack, marker|
-      marker.lat bike_rack.latitude
-      marker.lng bike_rack.longitude
-      marker.infowindow bike_rack.quantity.to_s+' racks at this location'
-    end
-    @water_fountains =  WaterFountain.all
-    @hashw = Gmaps4rails.build_markers(@water_fountains) do |water_fountain, marker|
-      marker.lat water_fountain.lat
-      marker.lng water_fountain.lon
-    end
+  @bike_racks = BikeRack.all
   end
 
   def heatmap
