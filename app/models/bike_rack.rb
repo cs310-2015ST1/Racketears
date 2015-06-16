@@ -2,6 +2,14 @@ class BikeRack < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
+  def self.clearAllData()
+    BikeRack.all.each do |br|
+      br.destroy
+    end
+
+  end
+
+
   def self.shortenLocation(string)
     string.partition(",").first
   end
