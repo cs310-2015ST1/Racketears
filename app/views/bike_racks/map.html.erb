@@ -35,6 +35,7 @@ var myLatLng = new google.maps.LatLng(49.279621, -123.125496);
 var myBounds = new google.maps.LatLngBounds(
 		      new google.maps.LatLng(49.195335, -123.244972),
 		      new google.maps.LatLng(49.292609, -122.965508));
+var infowindow = new google.maps.InfoWindow();
 
 function initialize() {
   geocoder = new google.maps.Geocoder();
@@ -63,13 +64,21 @@ function computeDistance(pt1, pt2){
 	      for(i = 0; i < br.length; i++) {
 	      	
 	      	var bikeRack = br[i];
+          var numbikeracks = bikeRack.quantity;
 	      	var rackLatLng = new google.maps.LatLng(bikeRack.latitude, bikeRack.longitude);
 	      	if(computeDistance(results[0].geometry.location, rackLatLng) < radius){
 	      		counter++;
 	      		var marker = new google.maps.Marker({
 	      			map: map,
-	      			position: rackLatLng, 
+	      			position: rackLatLng,
+              num: numbikeracks
 	      		});
+
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<p>Number of bike racks: ' + this.num.toString() + '</p>' +
+                '<row> <button onclick="myFunction()">Favourite</button> <button onclick="myFunction()">Tweet</button></row>');
+              infowindow.open(map, this);
+            });
 	      	}
 	      }
 	      if (counter == 0){
