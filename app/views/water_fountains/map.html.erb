@@ -26,6 +26,9 @@ var myLatLng = new google.maps.LatLng(49.279621, -123.125496);
 var myBounds = new google.maps.LatLngBounds(
 		      new google.maps.LatLng(49.195335, -123.244972),
 		      new google.maps.LatLng(49.292609, -122.965508));
+var infowindow = new google.maps.InfoWindow();
+
+
 
 function initialize() {
   geocoder = new google.maps.Geocoder();
@@ -61,12 +64,19 @@ function computeDistance(pt1, pt2){
 
 	      for(i = 0; i < wf.length; i++) {
 	      	var fountain = wf[i];
+          var fountainlocation = fountain.location;
 	      	var fountainLatLng = new google.maps.LatLng(fountain.lat, fountain.lon);
 	      	if(computeDistance(results[0].geometry.location, fountainLatLng) < 1000){
 	      		var marker = new google.maps.Marker({
 	      			map: map,
-	      			position: fountainLatLng, 
+	      			position: fountainLatLng,
+              info: fountainlocation 
 	      		});
+
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent(this.info);
+              infowindow.open(map, this);
+            });
 	      	}
 	      }
 
