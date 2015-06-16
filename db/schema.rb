@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150611200456) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bike_racks", force: :cascade do |t|
     t.text     "address"
     t.integer  "quantity"
