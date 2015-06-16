@@ -15,8 +15,9 @@
             <button class="btn btn-default" type="button" onclick="codeAddress()">Find bike racks!</button>
             </span>
             <input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
-        </div><!-- /input-group -->
+        </div><!-- /input-group --> 
       </div>
+
     </div>
   </div>
 
@@ -29,7 +30,7 @@
 <script>
 var geocoder;
 var map;
-var bikeRacks = [];
+var markers = [];
 var br = (<%=raw  @bike_racks.to_json %>);
 var myLatLng = new google.maps.LatLng(49.279621, -123.125496);
 var myBounds = new google.maps.LatLngBounds(
@@ -49,8 +50,17 @@ function computeDistance(pt1, pt2){
 	return google.maps.geometry.spherical.computeDistanceBetween(pt1, pt2);
 };
 
+// Deletes all markers in the array by removing references to them.
+  function deleteMarkers() {
+        //Loop through all the markers and remove
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+    };
 
   function codeAddress() {
+    deleteMarkers();
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -70,6 +80,7 @@ function computeDistance(pt1, pt2){
 	      			map: map,
 	      			position: rackLatLng, 
 	      		});
+            markers.push(marker);
 	      	}
 	      }
 	      if (counter == 0){
