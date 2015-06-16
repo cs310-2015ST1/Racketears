@@ -9,11 +9,20 @@
 
 
 
+  <div class="row"><!-- input-group -->
+  	<div class="col-md-5 col-md-offset-4">
+		<div div="panel">
+    		<div class="input-group">
+      			<span class="input-group-btn">
+        		<button class="btn btn-default" type="button" onclick="codeAddress()">Find water fountains!</button>
+      			</span>
+      			<input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
+    		</div><!-- /input-group -->
+    	</div>
+  	</div>
+  </div>
+
 <div id="map-container">
-	<div id="panel">
-      <input id="address" type="textbox" value="Sydney, NSW">
-      <input type="button" value="Geocode" onclick="codeAddress()">
-    </div>
   <div id="map"></div>
 </div>
 
@@ -37,17 +46,6 @@ function initialize() {
     center: myLatLng,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
-
-
-  // var rectangle = new google.maps.Rectangle({
-  //   strokeColor: '#FF0000',
-  //   strokeOpacity: 0.8,
-  //   strokeWeight: 2,
-  //   fillColor: '#FF0000',
-  //   fillOpacity: 0.35,
-  //   map: map,
-  //   bounds: myBounds
-  // });
 }
 
 function computeDistance(pt1, pt2){
@@ -61,12 +59,16 @@ function computeDistance(pt1, pt2){
     if (status == google.maps.GeocoderStatus.OK) {
     	if(myBounds.contains(results[0].geometry.location)){
 	      map.setCenter(results[0].geometry.location);
+	      
+	      var counter = 0;
+	      var radius = 1000;
 
 	      for(i = 0; i < wf.length; i++) {
 	      	var fountain = wf[i];
           var fountainlocation = fountain.location;
 	      	var fountainLatLng = new google.maps.LatLng(fountain.lat, fountain.lon);
-	      	if(computeDistance(results[0].geometry.location, fountainLatLng) < 1000){
+	      	if(computeDistance(results[0].geometry.location, fountainLatLng) < radius){
+	      	  counter++;
 	      		var marker = new google.maps.Marker({
 	      			map: map,
 	      			position: fountainLatLng,
@@ -78,6 +80,9 @@ function computeDistance(pt1, pt2){
               infowindow.open(map, this);
             });
 	      	}
+	      }
+	      if(counter == 0){
+	        alert("No water fountains in this location");
 	      }
 
 	  } else {
