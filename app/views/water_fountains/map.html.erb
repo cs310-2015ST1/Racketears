@@ -27,7 +27,6 @@
 <div id="map-container">
   <div id="map"></div>
 </div>
-<input onclick="DeleteMarkers();" type=button value="Delete Markers">
 
 <script>
 var geocoder;
@@ -74,6 +73,7 @@ function computeDistance(pt1, pt2){
     if (status == google.maps.GeocoderStatus.OK) {
     	if(myBounds.contains(results[0].geometry.location)){
 	      map.setCenter(results[0].geometry.location);
+        map.setZoom(14);
 	      
 	      var counter = 0;
 	      var radius = 1000;
