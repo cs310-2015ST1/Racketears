@@ -7,13 +7,20 @@
 
 
 
-
+<div class="row"><!-- input-group -->
+    <div class="col-md-5 col-md-offset-4">
+    <div div="panel">
+        <div class="input-group">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button" onclick="codeAddress()">Find bike racks!</button>
+            </span>
+            <input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
+        </div><!-- /input-group -->
+      </div>
+    </div>
+  </div>
 
 <div id="map-container">
-	<div id="panel">
-      <input id="address" type="textbox" value="Vancouver, BC">
-      <input type="button" value="Find Bike Racks nearby" onclick="codeAddress()">
-    </div>
   <div id="map"></div>
 </div>
 
@@ -93,53 +100,4 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
     </script>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<script>-->
-<!--handler = Gmaps.build('Google');-->
-<!--handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){-->
-<!--  racks = handler.addMarkers(<%=raw @hash.to_json %>);-->
-<!--  handler.bounds.extendWith(racks);-->
-<!--  handler.fitMapToBounds();-->
-<!--});-->
-
-<!--</script>-->
-
-<!--<script type="text/javascript">-->
-
-<!--function showRacks(){-->
-<!--	racks = handler.addMarkers(<%=raw @hash.to_json %>);-->
-<!--};-->
-
-<!--function clearRacks(){-->
-<!--	markers = handler.removeMarkers(racks);-->
-<!--};-->
-
-<!--function showWaterFountains(){-->
-<!--	fountainMarkers = handler.addMarkers(<%=raw @hashw.to_json %>);-->
-<!--};-->
-
-<!--function clearWaterFountains(){-->
-<!--	fountainMarkers = handler.removeMarkers(fountainMarkers);-->
-<!--}-->
-
-<!--</script>-->
-
-
-
-
-
 

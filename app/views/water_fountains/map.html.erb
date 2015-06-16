@@ -9,13 +9,26 @@
 
 
 
+  <div class="row"><!-- input-group -->
+  	<div class="col-md-5 col-md-offset-4">
+		<div div="panel">
+    		<div class="input-group">
+      			<span class="input-group-btn">
+        		<button class="btn btn-default" type="button" onclick="codeAddress()">Find water fountains!</button>
+      			</span>
+      			<input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
+    		</div><!-- /input-group -->
+    	</div>
+  	</div>
+  </div>
+
 <div id="map-container">
-	<div id="panel">
-      <input id="address" type="textbox" value="Vancouver, BC">
-      <input type="button" value="Find Water Fountains nearby" onclick="codeAddress()">
-    </div>
   <div id="map"></div>
 </div>
+
+
+
+
 
 <script>
 var geocoder;
