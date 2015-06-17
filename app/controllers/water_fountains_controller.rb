@@ -7,7 +7,7 @@ class WaterFountainsController < ApplicationController
 
   def populateWFData
 
-    # WaterFountain.clearAllData
+    WaterFountain.clearAllData
 
     wfurl = "ftp://webftp.vancouver.ca/OpenData/csv/drinking_fountains.csv"
     wffile = open(wfurl) 
