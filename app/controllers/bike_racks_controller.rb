@@ -19,7 +19,7 @@ class BikeRacksController < ApplicationController
     
 
 
-    (0...10).each do |i|
+    (0...1000).each do |i|
       temp = newbrArray[i]
       BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
     end
