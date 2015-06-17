@@ -16,7 +16,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">About <span class="sr-only">(current)</span></a></li>
+        <li>
+          <%= link_to aboutpage_path class: "about-button" do %>
+          <p class="about-button" href="#">About</p>
+          <% end %>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Water Fountains <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
