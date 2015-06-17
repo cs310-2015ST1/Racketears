@@ -4,6 +4,7 @@ class WaterFountain < ActiveRecord::Base
     WaterFountain.all.each do |wf|
       wf.destroy
     end
+  end
 
   def self.shortenLocation(string)
     string.partition(":").last
