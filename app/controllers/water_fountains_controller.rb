@@ -6,26 +6,20 @@ class WaterFountainsController < ApplicationController
 
 
   def populateWFData
+
+    WaterFountain.clearAllData
+
     wfurl = "ftp://webftp.vancouver.ca/OpenData/csv/drinking_fountains.csv"
     wffile = open(wfurl) 
     wfstring = wffile.read
+
+    wffile.close
+
     csvArray = CSV.parse(wfstring)
     newArray = csvArray.drop(1)
     for i in newArray
       WaterFountain.create(location: i[2].force_encoding('iso-8859-1').encode('utf-8'), lat: i[0].to_f, lon: i[1].to_f)
     end
-#arrayIndex = newArray.size - 1
-# 227..228 doesnt work
-# 228..229 doesnt work 
-# all others work therefore it is the element 228 which is 230 in file
-#(0...228).each do |i|
-# temp = newArray[i]
-#  WaterFountain.create(location: temp[2], lat: temp[0].to_f, lon: temp[1].to_f)
-#end
-#(229..233).each do |i|
-# temp = newArray[i]
-#  WaterFountain.create(location: temp[2], lat: temp[0].to_f, lon: temp[1].to_f)
-#end
 
     redirect_to waterfountains_path
 end

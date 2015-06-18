@@ -2,7 +2,7 @@ class BikeRack < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
-  def self.clearAllData()
+  def self.clearAllData
     BikeRack.all.each do |br|
       br.destroy
     end
