@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
   resources :bike_racks
   resources :water_fountains
   # The priority is based upon order of creation: first created -> highest priority.
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
   get 'bikeracks/heatmap' => 'bike_racks#heatmap'
 
   get 'waterfountains/heatmap' => 'water_fountains#heatmap'
+
+  get 'signup' => 'users#new'
 
 
 
