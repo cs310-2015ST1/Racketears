@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   root 'welcome#index'
 
   get 'aboutpage' => 'welcome#about'
@@ -23,6 +25,12 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
 
   get 'users/new'
+
+  get 'login'   => 'sessions#new'
+
+  post 'login'   => 'sessions#create'
+
+  delete 'logout'  => 'sessions#destroy'
 
   resources :bike_racks
   resources :water_fountains

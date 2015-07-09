@@ -1,0 +1,34 @@
+Run options: --seed 21059
+
+# Running:
+
+EE
+
+Finished in 0.031720s, 63.0518 runs/s, 0.0000 assertions/s.
+
+  1) Error:
+UsersLoginTest#test_login_with_invalid_info:
+ActiveRecord::Fixture::FormatError: a YAML error occurred parsing /Users/bollain/cs310/h2go/H2GO/test/fixtures/users.yml. Please note that YAML must be consistently indented using spaces. Tabs are not allowed. Please have a look at http://www.yaml.org/faq.html
+The exact error was:
+  Psych::SyntaxError: (<unknown>): found character that cannot start any token while scanning for the next token at line 4 column 1
+    
+
+Error:
+UsersLoginTest#test_login_with_invalid_info:
+NoMethodError: undefined method `each' for nil:NilClass
+    
+
+
+  2) Error:
+UsersLoginTest#test_login_with_valid_information:
+ActiveRecord::Fixture::FormatError: a YAML error occurred parsing /Users/bollain/cs310/h2go/H2GO/test/fixtures/users.yml. Please note that YAML must be consistently indented using spaces. Tabs are not allowed. Please have a look at http://www.yaml.org/faq.html
+The exact error was:
+  Psych::SyntaxError: (<unknown>): found character that cannot start any token while scanning for the next token at line 4 column 1
+    
+
+Error:
+UsersLoginTest#test_login_with_valid_information:
+NoMethodError: undefined method `each' for nil:NilClass
+    
+
+2 runs, 0 assertions, 0 failures, 2 errors, 0 skips
