@@ -1,42 +1,56 @@
-
 <%= render 'shared/nav'%>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Water Fountains :: Total: <%= WaterFountain.all.count %></h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <div class="row">
+        <div class="col-xs-1">
+        <%= link_to 'New Water fountain', new_water_fountain_path, class: 'btn btn-default' %>
+        </div>
+        <div class="col-xs-10" id="title">
+        <h1>Water Fountains - Total: <%= WaterFountain.all.count %></h1>
+        </div>
+        <div class="col-xs-1">
+        <%= button_to "Populate", waterfountains_populateWFData_path, class: 'btn btn-default' %>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <table class="table table-condensed table-striped" border="1">
+          <tr>
+            <th>Location</th> 
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Actions</th>
+          </tr>
+          <tbody>
+            <% @water_fountains.each do |water_fountain| %>
+            <tr>
+              <td><%= WaterFountain.shortenLocation(water_fountain.location) %></td>
+              <td><%= water_fountain.lat %></td>
+              <td><%= water_fountain.lon %></td>
+              <td><%= link_to 'Show', water_fountain %>
+                <%= link_to 'Edit', edit_water_fountain_path(water_fountain) %>
+                <%= link_to 'Destroy', water_fountain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <div class="col-xs-1"></div>
+
+  </div>
+</div>
 
 
 
-<table border="1" style="width:70%; margin-left:1%">
-  <tr>
-    <th>Location</th> 
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Actions</th>
-  </tr>
 
-  <tbody>
-    <% @water_fountains.each do |water_fountain| %>
-      <tr>
-        <td><%= WaterFountain.shortenLocation(water_fountain.location) %></td>
-        <td><%= water_fountain.lat %></td>
-        <td><%= water_fountain.lon %></td>
-        <td><%= link_to 'Show', water_fountain %>
-        <%= link_to 'Edit', edit_water_fountain_path(water_fountain) %>
-        <%= link_to 'Destroy', water_fountain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-</table>
-
-
-
-<br>
-
-<%= link_to "<< Back to Home", root_path %>
-
-<%= link_to 'New Water fountain', new_water_fountain_path %>
-
-<%= button_to "Populate", waterfountains_populateWFData_path %>

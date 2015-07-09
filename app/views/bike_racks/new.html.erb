@@ -1,5 +1,15 @@
-<h1>New Bike Rack</h1>
+<%= render 'shared/nav' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', bike_racks_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+      <div class="row" id="title"><h1>New Bike Rack</h1></div>
+      <div class="row" id="title">
+        <%= render 'form' %>
+        <%= link_to 'Back', bike_racks_path %>
+      </div>
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+</div>

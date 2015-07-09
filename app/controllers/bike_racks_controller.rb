@@ -5,8 +5,6 @@ class BikeRacksController < ApplicationController
   helper_method :populateBRData
  
   def populateBRData
-    
-    BikeRack.clearAllData
 
     brurl = "ftp://webftp.vancouver.ca/opendata/bike_rack/BikeRackData.csv"
     brfile = open(brurl)
@@ -27,9 +25,9 @@ class BikeRacksController < ApplicationController
     # for deployment
     for i in newbrArray
       sleep(0.2)   # to slow down the loop
-      BikeRack.create(address: i[0] + " " + i[1] + ", " + "Vancouver" + " BC", quantity: i[5])
+      address = i[0] + " " + i[1] + ", " + "Vancouver" + " BC"
+      BikeRack.create(address: address, quantity: i[5])
     end
-
 
       redirect_to bike_racks_path
     end

@@ -3,47 +3,39 @@
 
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <p>
+        <strong>Location:</strong>
+        <%= WaterFountain.shortenLocation(@water_fountain.location) %>
+      </p>
+      <p>
+        <strong>Lat:</strong>
+        <%= @water_fountain.lat %>
+      </p>
+      <p>
+        <strong>Lon:</strong>
+        <%= @water_fountain.lon %>
+      </p>
 
+      <%= link_to 'Edit', edit_water_fountain_path(@water_fountain) %> |
+      <%= link_to 'Back', water_fountains_path %>
+    </div>
+    <div class="col-xs-9">
+      <html>
+        <body>
 
-<style>
-p, img  {
-    position: relative;
-    right: -10px;
-}
-</style>
+          <% latLonArr = WaterFountain.parseLatLon(@water_fountain) %>
+          <% html = WaterFountain.imgStr(latLonArr) %>
 
+          <% img_height = 600 %>
 
-<p>
-  <strong>Location:</strong>
-  <%= WaterFountain.shortenLocation(@water_fountain.location) %>
-</p>
+          <img src=<%= html %> alt="Lamp" width=<%= img_height.to_s %> height=<%= img_height.to_s %> >
+          
+        </body>
+      </html>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Lat:</strong>
-  <%= @water_fountain.lat %>
-</p>
-
-<p>
-  <strong>Lon:</strong>
-  <%= @water_fountain.lon %>
-</p>
-
-
-
-<html>
-<body>
-
-  <% latLonArr = WaterFountain.parseLatLon(@water_fountain) %>
-  <% html = WaterFountain.imgStr(latLonArr) %>
-
-<% img_height = 150 %>
-
-<img src=<%= html %> alt="Lamp" width=<%= img_height.to_s %> height=<%= img_height.to_s %> >
-
-</body>
-</html>
-
-<DIV style="position: absolute; top:320px; left:10px; width:200px; height:25px">
-<%= link_to 'Edit', edit_water_fountain_path(@water_fountain) %> |
-<%= link_to 'Back', water_fountains_path %>
-</DIV>

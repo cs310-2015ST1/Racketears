@@ -2,19 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
-    position: relative;
-    right: -10px;
+#title {
+  text-align: center;
+}
+.table-striped>tbody>tr:nth-child(odd)>td,
+tr.found {
+  background-color: #fff;
 }
 th, td {
-    padding: 1px;
     text-align: center;
 }
 th, tr:nth-child(even) {
     background-color: #eee;
-}
-th, tr:nth-child(odd) {
-   background-color:#fff;
 }
 th, td td {
     background-color: black;

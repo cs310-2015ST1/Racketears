@@ -2,59 +2,47 @@
 
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <p>
+        <strong>Address:</strong>
+        <%= BikeRack.shortenLocation(@bike_rack.address) %>
+      </p>
+      <p>
+        <strong>Quantity:</strong>
+        <%= @bike_rack.quantity %>
+      </p>
+      <p>
+        <strong>Latitude:</strong>
+        <%= @bike_rack.latitude %>
+      </p>
+      <p>
+        <strong>Longitude:</strong>
+        <%= @bike_rack.longitude %>
+      </p>
+      
+      <%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
+      <%= link_to 'Back', bike_racks_path %>
+    </div>
+    <div class="col-xs-9">
+      <html>
+        <body>
 
-<style>
-p, img  {
-    position: relative;
-    right: -10px;
-}
-</style>
+          <% latLonArr = BikeRack.parseLatLon(@bike_rack) %>
+          <% html = BikeRack.imgStr(latLonArr) %>
 
+          <% img_height = 600 %>
+          
+          <img src=<%= html %> alt="Lamp" width=<%= img_height.to_s %> height=<%= img_height.to_s %> >
 
-<p>
-  <strong>Address:</strong>
-  <%= BikeRack.shortenLocation(@bike_rack.address) %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @bike_rack.quantity %>
-</p>
-
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @bike_rack.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @bike_rack.longitude %>
-</p>
-
-
-
-
-<html>
-<body>
-
-
-<% latLonArr = BikeRack.parseLatLon(@bike_rack) %>
-<% html = BikeRack.imgStr(latLonArr) %>
-
-<% img_height = 150 %>
-
-<img src=<%= html %> alt="Lamp" width=<%= img_height.to_s %> height=<%= img_height.to_s %> >
-
-</body>
-</html>
-
-<!-- add 200 to height for positioning -->
-<DIV style="position: absolute; top:350px; left:10px; width:200px; height:25px">
-
-<%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
-<%= link_to 'Back', bike_racks_path %>
+        </body>
+      </html>
+    </div>
+  </div>
 </div>
+
+
 
 
 

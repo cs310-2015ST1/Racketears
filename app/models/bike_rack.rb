@@ -23,7 +23,7 @@ class BikeRack < ActiveRecord::Base
 
    
   def self.imgStr(arr)
-    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=300x300&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
+    "https://maps.googleapis.com/maps/api/staticmap?center=" + arr.first.to_s + "," + arr.last.to_s + "&zoom=14&size=800x800&markers=" + arr.first.to_s + "," + arr.last.to_s + "&sensor=false"
   end
 
 

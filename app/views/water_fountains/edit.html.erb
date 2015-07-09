@@ -1,6 +1,16 @@
-<h1>Editing Water Fountain</h1>
+<%= render 'shared/nav'%>
 
-<%= render 'form' %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+      <div class="row"><h1 id="title">Editing Water Fountain</h1></div>
+      <div class="row" id="title">
+        <%= render 'form' %>
+        <%= link_to 'Back', water_fountains_path %>
+      </div>
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+</div>
 
-<%= link_to 'Show', @water_fountain %> |
-<%= link_to 'Back', water_fountains_path %>

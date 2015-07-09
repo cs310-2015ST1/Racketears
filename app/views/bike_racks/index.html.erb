@@ -1,44 +1,64 @@
-
 <%= render 'shared/nav'%>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Bike Racks :: Total:<%= BikeRack.all.count %></h1>
+<head>
+<style>
+
+</style>
+</head>
 
 
 
-<table border="1" style="width:60%; margin-left:1%">
-  <tr>
-    <th>Address</th> 
-    <th>Quantity</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Actions</th>
-  </tr>
-  
-  <tbody>
-    <% @bike_racks.each do |bike_rack| %>
-    <tr>
-      <td><%= BikeRack.shortenLocation(bike_rack.address) %></td>
-      <td><%= bike_rack.quantity %></td>
-      <td><%= bike_rack.latitude %></td>
-      <td><%= bike_rack.longitude %></td>
-      <td><%= link_to 'Show', bike_rack %>
-        <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
-        <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
 
-</table>
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
 
+      <div class="row">
+        <div class="col-xs-1">
+        <%= link_to 'New Bike rack', new_bike_rack_path, class: 'btn btn-default' %>
+        </div>
+        <div class="col-xs-10">
+        <h1 id="title">Bike Racks - Total:<%= BikeRack.all.count %></h1>
+        </div>
+        <div class="col-xs-1">
+        <%= button_to "Populate", bikeracks_populateBRData_path, class: 'btn btn-default' %>
+        </div>
+      </div>
 
+      <div class="row">
 
+        <table class="table table-condensed table-striped" border="1">
+          <thread>
+            <tr>
+              <th>Address</th> 
+              <th>Quantity</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Actions</th>
+            </tr>
+          </thread>  
+          <tbody>
+            <% @bike_racks.each do |bike_rack| %>
+            <tr>
+              <td><%= BikeRack.shortenLocation(bike_rack.address) %></td>
+              <td><%= bike_rack.quantity %></td>
+              <td><%= bike_rack.latitude %></td>
+              <td><%= bike_rack.longitude %></td>
+              <td><%= link_to 'Show', bike_rack %>
+                <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
+                <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<%= link_to "<< Back to Home", root_path %>
+      </div>
+    </div>
 
-<%= link_to 'New Bike rack', new_bike_rack_path %>
+    <div class="col-xs-1"></div>
 
-<%= button_to "Populate", bikeracks_populateBRData_path %>
-
+  </div>
+</div>
