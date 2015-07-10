@@ -8,8 +8,6 @@
 </style>
 </head>
 
-
-
 <div class="container">
 
   <div class="row">
@@ -18,13 +16,21 @@
 
       <div class="row">
         <div class="col-xs-1">
-        <%= link_to 'New Bike rack', new_bike_rack_path, class: 'btn btn-default' %>
+          <% if logged_in? %>
+            <% if admin? %>
+              <%= link_to 'New Bike rack', new_bike_rack_path, class: 'btn btn-default' %> 
+            <% end %>
+          <% end %>
         </div>
         <div class="col-xs-10">
         <h1 id="title">Bike Racks - Total:<%= BikeRack.all.count %></h1>
         </div>
         <div class="col-xs-1">
-        <%= button_to "Populate", bikeracks_populateBRData_path, class: 'btn btn-default' %>
+          <% if logged_in? %>
+            <% if admin? %>
+              <%= button_to "Populate", bikeracks_populateBRData_path, class: 'btn btn-default' %>
+            <% end %>
+          <% end %>
         </div>
       </div>
 
@@ -48,8 +54,13 @@
               <td><%= bike_rack.latitude %></td>
               <td><%= bike_rack.longitude %></td>
               <td><%= link_to 'Show', bike_rack %>
-                <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
-                <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if logged_in? %>
+                  <% if admin? %>
+                    <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
+                    <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>
