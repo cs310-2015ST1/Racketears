@@ -41,9 +41,10 @@
 
 <%= link_to "<< Back to Home", root_path %>
 
-<%= link_to 'New Water fountain', new_water_fountain_path %>
+
 <% if logged_in? %>
   <% if admin? %>
+    <%= link_to 'New Water fountain', new_water_fountain_path %>
     <%= button_to "Populate", waterfountains_populateWFData_path %>
   <% end %>
 <% end %>

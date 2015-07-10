@@ -42,10 +42,11 @@
 
 <%= link_to "<< Back to Home", root_path %>
 
-<%= link_to 'New Bike rack', new_bike_rack_path %>
+
 
 <% if logged_in? %>
   <% if admin? %>
+    <%= link_to 'New Bike rack', new_bike_rack_path %>
     <%= button_to "Populate", bikeracks_populateBRData_path %>
   <% end %>
 <% end %>
