@@ -66,10 +66,7 @@
               </ul>
             </li>
       <% else %>
-<!-- <li><%= link_to login_path, class: 'btn btn-default' do  %>
-          Log in
-        <% end %></li> -->
-        <li><button type="button" class="btn btn-default navbar-btn"><%= link_to "Log in", login_path %></button></li>
+        <li><input type="button" class="btn btn-default navbar-btn" onclick="location.href='/login';" value="Log in" /><li>
       <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
