@@ -24,8 +24,10 @@
       <td><%= bike_rack.latitude %></td>
       <td><%= bike_rack.longitude %></td>
       <td><%= link_to 'Show', bike_rack %>
-        <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
-        <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if admin? %>
+          <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
+          <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
     </tr>
     <% end %>
   </tbody>
@@ -40,5 +42,7 @@
 
 <%= link_to 'New Bike rack', new_bike_rack_path %>
 
-<%= button_to "Populate", bikeracks_populateBRData_path %>
+<% if admin? %>
+  <%= button_to "Populate", bikeracks_populateBRData_path %>
+<% end %>
 
