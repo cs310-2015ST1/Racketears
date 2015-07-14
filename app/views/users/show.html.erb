@@ -14,3 +14,43 @@
   	<h2>You are logged in as an admin!<h2>
   <% end %>
 </div>
+
+
+<div class="container">
+  <div class="row">
+    <h1>Favorite Amenities</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+
+      <table class="table table-condensed table-striped" border="1">
+        <tr>
+          <th>Type</th>
+          <th>Location</th> 
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Actions</th>
+        </tr>
+        <tbody>
+          <% @user.favorite_water_fountains.each do |water_fountain| %>
+          <tr>
+            <td><%= water_fountain.class %></td>
+            <td><%= WaterFountain.shortenLocation(water_fountain.location) %></td>
+            <td><%= water_fountain.lat %></td>
+            <td><%= water_fountain.lon %></td>
+            <td><%= link_to 'Show', water_fountain %>
+              <% if logged_in? && admin? %>
+                <%= link_to 'Edit', edit_water_fountain_path(water_fountain) %>
+                <%= link_to 'Destroy', water_fountain, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
