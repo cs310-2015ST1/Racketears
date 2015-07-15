@@ -94,10 +94,29 @@ function computeDistance(pt1, pt2){
             markers.push(marker);
 
             google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
-                '<row> <button onclick="myFunction()">Favourite</button> <button onclick="myFunction()">Tweet</button></row>');
+
+              tweet = '<a href="https://twitter.com/share" class="twitter-share-button" data-related="CityOfVancouver">Tweet</a>';
+            
+              infocontent = '<p>Fountain Location: '+ this.info +'</p>' + '<p>' + tweet + '</p>' +
+                '<row> <button onclick="myFunction()">Favourite</button></row>';
+
+              infowindow.setContent(infocontent);
               infowindow.open(map, this);
+              twttr.widgets.load();
+              
+              
             });
+              google.maps.event.addListener(infowindow, 'domready', function () {
+               ! function (d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = "//platform.twitter.com/widgets.js";
+              fjs.parentNode.insertBefore(js, fjs);
+                }
+               }(document, "script", "twitter-widgets");
+              });
 
 	      	}
 	      }
