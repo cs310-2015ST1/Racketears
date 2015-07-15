@@ -1,8 +1,3 @@
-<%= render 'shared/nav'%>
-
-<p id="notice"><%= notice %></p>
-
-
 <div class="container">
   <div class="row">
     <div class="col-xs-1"></div>
@@ -17,8 +12,10 @@
         <h1>Water Fountains - Total: <%= WaterFountain.all.count %></h1>
         </div>
         <div class="col-xs-1">
-          <% if logged_in? && admin? %>
-            <%= button_to "Populate", waterfountains_populateWFData_path, class: 'btn btn-default' %>
+          <% if logged_in? %>
+            <% if admin? %>
+              <%= button_to "Populate", waterfountains_populateWFData_path, class: 'btn btn-default' %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -39,9 +36,11 @@
               <td><%= water_fountain.lat %></td>
               <td><%= water_fountain.lon %></td>
               <td><%= link_to 'Show', water_fountain %>
-                <% if logged_in? && admin? %>
+                <% if logged_in? %>
+                  <% if admin? %>
                   <%= link_to 'Edit', edit_water_fountain_path(water_fountain) %>
                   <%= link_to 'Destroy', water_fountain, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>               
                 <% end %>
               </td>
             </tr>

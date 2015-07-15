@@ -89,7 +89,8 @@ end
   def destroy
     @water_fountain.destroy
     respond_to do |format|
-      format.html { redirect_to water_fountains_url, notice: 'Water fountain was successfully destroyed.' }
+      flash[:success] = 'Bike rack was successfully destroyed.'
+      format.html { redirect_to water_fountains_url }
       format.json { head :no_content }
     end
   end

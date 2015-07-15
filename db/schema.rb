@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20150714021051) do
     t.float    "longitude"
   end
 
+  create_table "bike_racks_users", id: false, force: :cascade do |t|
+    t.integer "user_id",      null: false
+    t.integer "bike_rack_id", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "favorited_id"
@@ -47,6 +52,11 @@ ActiveRecord::Schema.define(version: 20150714021051) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "users_water_fountains", id: false, force: :cascade do |t|
+    t.integer "user_id",           null: false
+    t.integer "water_fountain_id", null: false
+  end
 
   create_table "water_fountains", force: :cascade do |t|
     t.string   "location"
