@@ -47,16 +47,16 @@ var infowindow = new google.maps.InfoWindow();
 
 function showFavourites() {
 
+if (<%= !logged_in? %>) {
+  window.location.href = "/login";
+}
+
 if (<%= logged_in? %>) {
 
+var favWF = (<%=raw @user.favorite_water_fountains.to_json %>);
+deleteMarkers();
 
-var favWF = (<%=raw current_user.favorite_water_fountains.to_json %>);
-
-
-
-    deleteMarkers();
-
-  geocoder.geocode( { 'address': "300 homer st Vancouver"}, function(results, status) {
+geocoder.geocode( { 'address': "300 homer st Vancouver"}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
     	if(myBounds.contains(results[0].geometry.location)){
 	      

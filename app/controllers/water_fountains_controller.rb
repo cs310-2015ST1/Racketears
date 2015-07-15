@@ -33,7 +33,13 @@ end
 
   def map 
     @water_fountains = WaterFountain.all
+    if (logged_in?)
+      @user = current_user
+    else
+      @user = User.new
+    end
   end
+
 
   def heatmap
     @water_fountains = WaterFountain.all
