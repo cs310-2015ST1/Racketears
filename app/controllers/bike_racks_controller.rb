@@ -6,14 +6,31 @@ class BikeRacksController < ApplicationController
  
   def populateBRData
 
+  # no clear all data...
+  
     brurl = "ftp://webftp.vancouver.ca/opendata/bike_rack/BikeRackData.csv"
     brfile = open(brurl)
     brstring = brfile.read
-
     brfile.close
+    
+    parseCSV(brstring)
+    
+    redirect_to bike_racks_path
+    end
+  end
+   
+    # def parseCSV(s)
+    #   brArray = CSV.parse(s)
+    #   arr = brArray.drop(1)
+    #   createRacks(arr)
+    # end
+   
 
-    brArray = CSV.parse(brstring)
-    newbrArray = brArray.drop(1)
+   
+    
+    
+   # brArray = CSV.parse(brstring)
+    #newbrArray = brArray.drop(1)
     
 
     # for development
@@ -21,16 +38,27 @@ class BikeRacksController < ApplicationController
       # temp = newbrArray[i]
       # BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
     # end
+    
+    # def createRacks(arr)
+    #   for i in arr
+    #   sleep(0.2)   # to slow down the loop
+    #   address = i[0] + " " + i[1] + ", " + "Vancouver" + " BC"
+    #   BikeRack.create(address: address, quantity: i[5])
+    # end
+    #   redirect_to bike_racks_path
+    # end
+      
+    
 
     # for deployment
-    for i in newbrArray
-      sleep(0.2)   # to slow down the loop
-      address = i[0] + " " + i[1] + ", " + "Vancouver" + " BC"
-      BikeRack.create(address: address, quantity: i[5])
-    end
+    # for i in newbrArray
+    #   sleep(0.2)   # to slow down the loop
+    #   address = i[0] + " " + i[1] + ", " + "Vancouver" + " BC"
+    #   BikeRack.create(address: address, quantity: i[5])
+    # end
 
-      redirect_to bike_racks_path
-    end
+    #   redirect_to bike_racks_path
+    # end
 
 
 
