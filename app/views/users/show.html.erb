@@ -48,6 +48,21 @@
             </td>
           </tr>
           <% end %>
+          <% @user.favorite_bike_racks.each do |bike_rack| %>
+          <tr>
+            <td><%= bike_rack.class %></td>
+            <td><%= BikeRack.shortenLocation(bike_rack.address) %></td>
+            <td><%= bike_rack.latitude %></td>
+            <td><%= bike_rack.longitude %></td>
+            <td><%= link_to 'Show', bike_rack %>
+              <% if logged_in? && admin? %>
+                <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
+                <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+          
         </tbody>
       </table>
     </div>
