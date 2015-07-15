@@ -16,18 +16,18 @@ class BikeRacksController < ApplicationController
     newbrArray = brArray.drop(1)
     
 
-    # for development
-    # (0...1000).each do |i|
-      # temp = newbrArray[i]
-      # BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
-    # end
+     for
+    (0...50).each do |i|
+       temp = newbrArray[i]
+       BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
+     end
 
     # for deployment
-    for i in newbrArray
-      sleep(0.2)   # to slow down the loop
-      address = i[0] + " " + i[1] + ", " + "Vancouver" + " BC"
-      BikeRack.create(address: address, quantity: i[5])
-    end
+    #for i in newbrArray
+    #  sleep(0.2)   # to slow down the loop
+    #  address = i[0] + " " + i[1] + ", " + "Vancouver" + " BC"
+    #  BikeRack.create(address: address, quantity: i[5])
+    #end
 
       redirect_to bike_racks_path
     end

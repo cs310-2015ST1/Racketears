@@ -90,18 +90,6 @@ function computeDistance(pt1, pt2){
 	      		});
             markers.push(marker);
 
-            google.maps.event.addListener(marker, 'click', function() {
-              
-              tweet = '<a href="https://twitter.com/share" class="twitter-share-button" data-related="CityOfVancouver">Tweet</a>';
-            
-              infocontent = '<p>Number of bike racks: ' + this.num.toString() + '</p>' + '<p>' + tweet + '</p>' +
-                '<row> <button onclick="myFunction()">Favourite</button></row>';
-
-              infowindow.setContent(infocontent);
-              infowindow.open(map, this);
-              twttr.widgets.load();
-
-            });
 
               google.maps.event.addListener(infowindow, 'domready', function () {
               ! function (d, s, id) {
@@ -113,7 +101,22 @@ function computeDistance(pt1, pt2){
               fjs.parentNode.insertBefore(js, fjs);
                 }
                }(document, "script", "twitter-widgets");
+              twttr.widgets.load();
               });
+              
+            google.maps.event.addListener(marker, 'click', function() {
+              
+              tweet = '<a href="https://twitter.com/share" class="twitter-share-button" data-related="CityOfVancouver">Tweet</a>';
+            
+              infocontent = '<p>Number of bike racks: ' + this.num.toString() + '</p><p>' + tweet + '</p>' +
+                '<row> <button onclick="myFunction()">Favourite</button></row>';
+
+              infowindow.setContent(infocontent);
+              infowindow.open(map, this);
+
+            });
+
+
 
 	      	}
 	      }
