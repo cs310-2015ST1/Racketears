@@ -3,15 +3,18 @@ class FavoriteWaterFountainsController < ApplicationController
   
   def create
     if Favorite.create(favorited: @water_fountain, user: current_user)
-      redirect_to @water_fountain, notice: 'Water Fountain has been favorited'
+      flash[:success] = 'Water Fountain has been favorited'
+      redirect_to @water_fountain
     else
-      redirect_to @water_fountain, alert: 'Something went wrong...*sad panda*'
+      flash[:danger] = 'Something went wrong...*sad panda*'
+      redirect_to @water_fountain
     end
   end
   
   def destroy
     Favorite.where(favorited_id: @water_fountain.id, user_id: current_user.id).first.destroy
-    redirect_to @water_fountain, notice: 'Water Fountain is no longer in favorites'
+    flash[:success] = 'Water Fountain is no longer in favorites'
+    redirect_to @water_fountain
   end
 
   helper_method :create

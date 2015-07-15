@@ -1,4 +1,10 @@
 
+<% if !logged_in? %>
+<script>
+window.location.href="/login";
+</script>
+<% else %>
+
 
 <% provide(:title, @user.name) %>
 <div class="row">
@@ -44,6 +50,8 @@
               <% if logged_in? && admin? %>
                 <%= link_to 'Edit', edit_water_fountain_path(water_fountain) %>
                 <%= link_to 'Destroy', water_fountain, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Unfavourite', favorite_water_fountain_path(water_fountain), method: :delete %>
               <% end %>
             </td>
           </tr>
@@ -54,3 +62,5 @@
 
   </div>
 </div>
+
+<% end %>
