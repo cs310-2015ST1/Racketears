@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :water_fountains
   resources :users
   resources :favorite_water_fountains, only: [:create, :destroy]
-
+  resources :favorite_bike_racks, only: [:create, :destroy]
 
 
 

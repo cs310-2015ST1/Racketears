@@ -41,7 +41,12 @@ class BikeRacksController < ApplicationController
 
   # first step
   def map
-  @bike_racks = BikeRack.all
+    @bike_racks = BikeRack.all
+    if (logged_in?)
+      @user = current_user
+    else
+      @user = User.new
+    end
   end
 
   def heatmap
