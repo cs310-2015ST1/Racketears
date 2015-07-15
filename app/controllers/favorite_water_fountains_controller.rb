@@ -13,8 +13,6 @@ class FavoriteWaterFountainsController < ApplicationController
     Favorite.where(favorited_id: @water_fountain.id, user_id: current_user.id).first.destroy
     redirect_to @water_fountain, notice: 'Water Fountain is no longer in favorites'
   end
-
-  helper_method :create
   
   private
   
