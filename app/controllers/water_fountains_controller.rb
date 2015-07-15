@@ -61,9 +61,11 @@ end
 
     respond_to do |format|
       if @water_fountain.save
-        format.html { redirect_to @water_fountain, notice: 'Water fountain was successfully created.' }
+        flash[:success] = 'Water fountain was successfully created.'
+        format.html { redirect_to @water_fountain }
         format.json { render :show, status: :created, location: @water_fountain }
       else
+        flash[:danger] = 'There was a problem creating Water fountain.'
         format.html { render :new }
         format.json { render json: @water_fountain.errors, status: :unprocessable_entity }
       end
@@ -75,9 +77,11 @@ end
   def update
     respond_to do |format|
       if @water_fountain.update(water_fountain_params)
-        format.html { redirect_to @water_fountain, notice: 'Water fountain was successfully updated.' }
+        flash[:success] = 'Water fountain was successfully edited.'
+        format.html { redirect_to @water_fountain }
         format.json { render :show, status: :ok, location: @water_fountain }
       else
+        flash[:danger] = 'There was a problem editing Water fountain.'
         format.html { render :edit }
         format.json { render json: @water_fountain.errors, status: :unprocessable_entity }
       end
@@ -89,7 +93,7 @@ end
   def destroy
     @water_fountain.destroy
     respond_to do |format|
-      flash[:success] = 'Bike rack was successfully destroyed.'
+      flash[:success] = 'Water fountain was successfully destroyed.'
       format.html { redirect_to water_fountains_url }
       format.json { head :no_content }
     end
