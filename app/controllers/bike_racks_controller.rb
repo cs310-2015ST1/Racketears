@@ -3,6 +3,7 @@ require 'csv'
 class BikeRacksController < ApplicationController
   before_action :set_bike_rack, only: [:show, :edit, :update, :destroy]
   helper_method :populateBRData
+  include BikeRacksHelper
  
   def populateBRData
 
@@ -17,7 +18,7 @@ class BikeRacksController < ApplicationController
     
     redirect_to bike_racks_path
     end
-  end
+  
    
     # def parseCSV(s)
     #   brArray = CSV.parse(s)

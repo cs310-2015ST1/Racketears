@@ -13,6 +13,7 @@ module BikeRacksHelper
       address = i[0] + " " + i[1] + ", " + "Vancouver" + " BC"
       BikeRack.create(address: address, quantity: i[5])
     end
+end
 
     
 end
