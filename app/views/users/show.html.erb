@@ -66,6 +66,8 @@ window.location.href="/login";
               <% if logged_in? && admin? %>
                 <%= link_to 'Edit', edit_bike_rack_path(bike_rack) %>
                 <%= link_to 'Destroy', bike_rack, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Unfavourite', favorite_bike_rack_path(bike_rack), method: :delete %>
               <% end %>
             </td>
           </tr>
