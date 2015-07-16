@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
+  has_many :favorites
+  has_many :favorite_water_fountains, through: :favorites, source: :favorited, source_type: 'WaterFountain'
+  has_many :favorite_bike_racks, through: :favorites, source: :favorited, source_type: 'BikeRack'
+
 	attr_accessor :remember_token
+
 
 	before_save { self.email = email.downcase }
 	validates :name, presence: true, length: { maximum: 50}

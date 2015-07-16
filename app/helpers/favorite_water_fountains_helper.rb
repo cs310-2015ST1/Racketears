@@ -1,0 +1,2 @@
+module FavoriteWaterFountainsHelper
+end

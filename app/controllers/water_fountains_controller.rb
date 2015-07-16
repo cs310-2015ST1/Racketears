@@ -2,7 +2,7 @@ require 'open-uri'
 require 'csv'
 class WaterFountainsController < ApplicationController
   before_action :set_water_fountain, only: [:show, :edit, :update, :destroy]
-  helper_method :populateWFData
+  include WaterFountainsHelper
 
 
   def populateWFData
@@ -15,11 +15,7 @@ class WaterFountainsController < ApplicationController
 
     wffile.close
 
-    csvArray = CSV.parse(wfstring)
-    newArray = csvArray.drop(1)
-    for i in newArray
-      WaterFountain.create(location: i[2].force_encoding('iso-8859-1').encode('utf-8'), lat: i[0].to_f, lon: i[1].to_f)
-    end
+    parse_wf_csv(wfstring)
 
     redirect_to waterfountains_path
 end
@@ -94,8 +90,6 @@ end
     end
   end
 
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_water_fountain
@@ -106,4 +100,5 @@ end
     def water_fountain_params
       params.require(:water_fountain).permit(:location, :lat, :lon)
     end
+
 end

@@ -46,4 +46,6 @@ class BikeRacksControllerTest < ActionController::TestCase
 
     assert_redirected_to bike_racks_path
   end
+
+  
 end

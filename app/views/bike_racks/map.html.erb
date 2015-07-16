@@ -1,5 +1,5 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<meta charset="utf-8">
+    <meta charset="utf-8">
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
 
@@ -7,7 +7,9 @@
 
 
 
-<div class="row"><!-- input-group -->
+
+
+  <div class="row"><!-- input-group -->
     <div class="col-md-5 col-md-offset-4">
     <div div="panel">
         <div class="input-group">
@@ -15,19 +17,16 @@
             <button class="btn btn-default" type="button" onclick="codeAddress()">Find bike racks!</button>
             </span>
               <form onsubmit="codeAddress(); return false">
-                <input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
+               <input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
               </form>
         </div><!-- /input-group --> 
       </div>
-
     </div>
   </div>
 
 <div id="map-container">
   <div id="map"></div>
 </div>
-
-
 
 <script>
 var geocoder;
@@ -40,6 +39,8 @@ var myBounds = new google.maps.LatLngBounds(
 		      new google.maps.LatLng(49.292609, -122.965508));
 var infowindow = new google.maps.InfoWindow();
 
+
+
 function initialize() {
   geocoder = new google.maps.Geocoder();
     map = new google.maps.Map(document.getElementById('map'), {
@@ -47,6 +48,8 @@ function initialize() {
     center: myLatLng,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
+  
+  
 }
 
 function computeDistance(pt1, pt2){
@@ -62,8 +65,17 @@ function computeDistance(pt1, pt2){
         markers = [];
     };
 
+//The following function is to favourite bike racks
+var set_favorite = function(id){
+  if(<%= logged_in? %>){
+    window.location.href="/bike_racks/"+id;
+    //alert(id);
+  } else {
+    window.location.href="/signup";
+  }
+};
 
- //The following js functions are based on the Google Maps API Samples
+//The following js functions are based on the Google Maps API Samples
   function codeAddress() {
     deleteMarkers();
   var address = document.getElementById('address').value;
@@ -77,8 +89,10 @@ function computeDistance(pt1, pt2){
 	      var radius = 1000;
 
 	      for(i = 0; i < br.length; i++) {
-	      	
 	      	var bikeRack = br[i];
+	      //	var str = bikeRack.location;
+	      	var sid = bikeRack.id;
+	      //	var bikeRackLocation = str.substring(str.indexOf(":") + 1);
           var numbikeracks = bikeRack.quantity;
 	      	var rackLatLng = new google.maps.LatLng(bikeRack.latitude, bikeRack.longitude);
 	      	if(computeDistance(results[0].geometry.location, rackLatLng) < radius){
@@ -86,9 +100,17 @@ function computeDistance(pt1, pt2){
 	      		var marker = new google.maps.Marker({
 	      			map: map,
 	      			position: rackLatLng,
-              num: numbikeracks
+              num: numbikeracks,
+              id: sid,
+              animation: google.maps.Animation.DROP
 	      		});
+	      		
             markers.push(marker);
+            
+            
+            
+            
+
 
             google.maps.event.addListener(marker, 'click', function() {
               
@@ -100,7 +122,6 @@ function computeDistance(pt1, pt2){
               infowindow.setContent(infocontent);
               infowindow.open(map, this);
               twttr.widgets.load();
-
             });
 
               google.maps.event.addListener(infowindow, 'domready', function () {
@@ -132,4 +153,3 @@ function computeDistance(pt1, pt2){
 
 google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-

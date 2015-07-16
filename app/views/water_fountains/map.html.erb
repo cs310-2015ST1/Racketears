@@ -65,6 +65,16 @@ function computeDistance(pt1, pt2){
         markers = [];
     };
 
+//The following function is to favourite water fountains
+var set_favorite = function(id){
+  if(<%= logged_in? %>){
+    window.location.href="/water_fountains/"+id;
+    //alert(id);
+  } else {
+    window.location.href="/signup";
+  }
+};
+
 //The following js functions are based on the Google Maps API Samples
   function codeAddress() {
     deleteMarkers();
@@ -81,6 +91,7 @@ function computeDistance(pt1, pt2){
 	      for(i = 0; i < wf.length; i++) {
 	      	var fountain = wf[i];
           var str = fountain.location;
+          var sid = fountain.id;
           var fountainlocation = str.substring(str.indexOf(":") + 1);
 	      	var fountainLatLng = new google.maps.LatLng(fountain.lat, fountain.lon);
 	      	if(computeDistance(results[0].geometry.location, fountainLatLng) < radius){
@@ -88,7 +99,9 @@ function computeDistance(pt1, pt2){
 	      		var marker = new google.maps.Marker({
 	      			map: map,
 	      			position: fountainLatLng,
-              info: fountainlocation
+              info: fountainlocation,
+              id: sid,
+              animation: google.maps.Animation.DROP
 	      		});
 
             markers.push(marker);
@@ -136,7 +149,8 @@ function computeDistance(pt1, pt2){
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
+
+
+
+
     </script>
- 
-
-
