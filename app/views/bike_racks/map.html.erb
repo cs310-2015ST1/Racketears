@@ -219,9 +219,12 @@ if(favourited) {
 
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Number of bike racks: ' + this.num.toString() + '</p>' +
+
                 '<row> <button onclick="get_info('+ this.id +')">Show</button> <button onclick="myFunction()">Tweet</button> <a rel="nofollow" data-method="post" href="/favorite_bike_racks?bike_rack_id='+this.id+'">Add to favorites</a></row>');
               infowindow.open(map, this);
-                                          
+
+              
+
             });
 
 }
@@ -252,4 +255,3 @@ if(favourited) {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-
