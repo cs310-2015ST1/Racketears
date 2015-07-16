@@ -35,7 +35,11 @@
   </div>
       <div class="voffset2"></div>
   <div class="row">      
+<% if logged_in? %>
+<% if admin? %>
     <%= link_to 'Edit', edit_bike_rack_path(@bike_rack) %> |
+<% end %>
+<% end %>
     <%= link_to 'Back', bike_racks_path %>
   </div>
 </div>
