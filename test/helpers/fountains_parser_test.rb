@@ -18,11 +18,11 @@ eos
 test "parser should work" do
 assert_empty(WaterFountain.all, "Test database should be empty before testing parser!")
 parse_wf_csv(csv_sample)
-# Test that parser created four WF objects!
 assert_equal(4,WaterFountain.count, "Wrong number of fountains created!")
 sample_wf = WaterFountain.first 
 assert_kind_of(WaterFountain, sample_wf)
 assert_equal("Fountain location:Aberdeen", sample_wf.location)
+assert_equal("Fountain location:Almond", WaterFountain.all.last.location)
 
 
 end
