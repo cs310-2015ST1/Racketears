@@ -1,8 +1,11 @@
 module BikeRacksHelper
     
+    # 
     
     def parseCSV(s)
+        #create 2D Array of String
       brArray = CSV.parse(s)
+        #drop CSV header line
       arr = brArray.drop(1)
       createRacks(arr)
     end
@@ -14,6 +17,13 @@ module BikeRacksHelper
       BikeRack.create(address: address, quantity: i[5])
     end
 end
+
+
+     # for development
+    # (0...100).each do |i|
+      # temp = arr[i]
+      # BikeRack.create(address: temp[0] + " " + temp[1] + ", " + "Vancouver" + " BC", quantity: temp[5])
+    # end
 
     
 end
