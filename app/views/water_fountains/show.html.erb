@@ -1,26 +1,39 @@
-
-<%= render 'shared/nav'%>
-
-<p id="notice"><%= notice %></p>
-
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-      <p>
+<div class="row">
+
+      <div class="row">
         <strong>Location:</strong>
         <%= WaterFountain.shortenLocation(@water_fountain.location) %>
-      </p>
-      <p>
+      </div>
+      <div class="voffset2"></div>
+      <div class="row">
         <strong>Lat:</strong>
         <%= @water_fountain.lat %>
-      </p>
-      <p>
+      </div>
+      <div class="voffset2"></div>
+      <div class="row">
         <strong>Lon:</strong>
         <%= @water_fountain.lon %>
-      </p>
+      </div>
+      <div class="voffset2"></div>
+      <div class="row">
+        
+<%- unless current_user.favorite_water_fountains.exists?(id: @water_fountain.id) -%>
+<%= link_to 'Add to favorites', favorite_water_fountains_path(water_fountain_id: @water_fountain), method: :post %>
+<%- else -%>
+<%= link_to 'Remove from favorites', favorite_water_fountain_path(@water_fountain), method: :delete %>
+<%- end -%>
 
+      </div>
+      <div class="voffset2"></div>
+      <div class="row">
       <%= link_to 'Edit', edit_water_fountain_path(@water_fountain) %> |
       <%= link_to 'Back', water_fountains_path %>
+      </div>
+</div>
+      
     </div>
     <div class="col-xs-9">
       <html>
@@ -38,9 +51,3 @@
     </div>
   </div>
 </div>
-
-<%- unless current_user.favorite_water_fountains.exists?(id: @water_fountain.id) -%>
-<%= link_to 'Add to favorites', favorite_water_fountains_path(water_fountain_id: @water_fountain), method: :post %>
-<%- else -%>
-<%= link_to 'Remove from favorites', favorite_water_fountain_path(@water_fountain), method: :delete %>
-<%- end -%>

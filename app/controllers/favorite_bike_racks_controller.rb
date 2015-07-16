@@ -3,15 +3,18 @@ class FavoriteBikeRacksController < ApplicationController
   
   def create
     if Favorite.create(favorited: @bike_rack, user: current_user)
-      redirect_to @bike_rack, notice: 'Bike Rack has been favorited'
+      flash[:success] = 'Bike Rack has been favorited'
+      redirect_to @bike_rack
     else
-      redirect_to @bike_rack, alert: 'Something went wrong...*sad panda*'
+      flash[:danger] ='Something went wrong...*sad panda*'
+      redirect_to @bike_rack
     end
   end
   
   def destroy
     Favorite.where(favorited_id: @bike_rack.id, user_id: current_user.id).first.destroy
-    redirect_to @bike_rack, notice: 'Bike Rack is no longer in favorites'
+    flash[:success] = 'Bike Rack is no longer in favorites'
+    redirect_to @bike_rack
   end
 
   helper_method :create

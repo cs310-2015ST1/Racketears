@@ -3,26 +3,26 @@
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
 
-<%= render 'shared/nav'%>
 
 
-
-
-
-  <div class="row"><!-- input-group -->
-  	<div class="col-md-5 col-md-offset-4">
-		<div div="panel">
-    		<div class="input-group">
-      			<span class="input-group-btn">
-        		<button class="btn btn-default" type="button" onclick="codeAddress()">Find water fountains!</button>
-      			</span>
-              <form onsubmit="codeAddress(); return false">
-      			   <input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
-              </form>
-    		</div><!-- /input-group -->
-    	</div>
-  	</div>
+<div class="row"><!-- input-group -->
+  <div class="col-md-4"></div>
+  <div class="col-md-5">
+    <div div="panel">
+      <div class="input-group">
+      	<span class="input-group-btn">
+          <button class="btn btn-default" type="button" onclick="codeAddress()">Find water fountains!</button>
+      	</span>
+        <form onsubmit="codeAddress(); return false">
+      	  <input id="address" class="form-control" placeholder="Enter address in Vancouver BC...">
+        </form>
+      </div><!-- /input-group -->
+    </div>
   </div>
+  <div class="col-md-3">
+    <button class="btn btn-default" type="button" onclick="showFavourites()">Show Favourites!</button>
+  </div>
+</div>
 
 <div id="map-container">
   <div id="map"></div>
@@ -33,13 +33,71 @@ var geocoder;
 var map;
 var markers = [];
 var wf = (<%=raw  @water_fountains.to_json %>);
+
+
 var myLatLng = new google.maps.LatLng(49.279621, -123.125496);
 var myBounds = new google.maps.LatLngBounds(
 		      new google.maps.LatLng(49.195335, -123.244972),
 		      new google.maps.LatLng(49.292609, -122.965508));
 var infowindow = new google.maps.InfoWindow();
 
+function showFavourites() {
 
+if (<%= !logged_in? %>) {
+  window.location.href = "/login";
+} else {
+
+var favWF = (<%=raw @user.favorite_water_fountains.to_json %>);
+deleteMarkers();
+
+geocoder.geocode( { 'address': "300 homer st Vancouver"}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+    	if(myBounds.contains(results[0].geometry.location)){
+	      
+	      var counter = 0;
+	      var radius = 1000;
+
+	      for(i = 0; i < favWF.length; i++) {
+	      	var fountain = favWF[i];
+          var str = fountain.location;
+          var sid = fountain.id;
+          var fountainlocation = str.substring(str.indexOf(":") + 1);
+	      	var fountainLatLng = new google.maps.LatLng(fountain.lat, fountain.lon);
+
+	      	  counter++;
+	      		var marker = new google.maps.Marker({
+	      			map: map,
+	      			position: fountainLatLng,
+              info: fountainlocation,
+              id: sid,
+              animation: google.maps.Animation.DROP
+	      		});
+
+            markers.push(marker);
+
+
+            google.maps.event.addListener(marker, 'click', function(id) {
+              infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
+                '<row> <button onclick="get_info('+ this.id +')">Show</button> <button onclick="myFunction()">Tweet</button> <a rel="nofollow" data-method="delete" href="/favorite_water_fountains/'+this.id+'">Remove from favorites</a></row>');
+              infowindow.open(map, this);
+            });
+
+	      	
+	      }
+	      if(counter == 0){
+	        alert("No water fountains in favorite list!");
+	      }
+
+	  } else {
+	  	alert("Sorry, something broke..");
+	  }
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+
+}
+}
 
 function initialize() {
   geocoder = new google.maps.Geocoder();
@@ -49,7 +107,7 @@ function initialize() {
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
 
- // google.maps.event.addListener(map, 'click', function(event);
+
 }
 
 function computeDistance(pt1, pt2){
@@ -66,10 +124,9 @@ function computeDistance(pt1, pt2){
     };
 
 //The following function is to favourite water fountains
-var set_favorite = function(id){
+var get_info = function(id){
   if(<%= logged_in? %>){
     window.location.href="/water_fountains/"+id;
-    //alert(id);
   } else {
     window.location.href="/signup";
   }
@@ -106,14 +163,46 @@ var set_favorite = function(id){
 
             markers.push(marker);
 
-            google.maps.event.addListener(marker, 'click', function() {
 
-              tweet = '<a href="https://twitter.com/share" class="twitter-share-button" data-related="CityOfVancouver">Tweet</a>';
-            
-              infocontent = '<p>Fountain Location: '+ this.info +'</p>' + '<p>' + tweet + '</p>' +
-                '<row> <button onclick="myFunction()">Favourite</button></row>';
+if(<%= !logged_in? %>) {
+            google.maps.event.addListener(marker, 'click', function(id) {
+              infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
 
-              infowindow.setContent(infocontent);
+                '<row> <button onclick="get_info('+ this.id +')">Info</button> <button onclick="myFunction()">Tweet</button> <a href="/login">Add to favorites</a></row>');
+
+              infowindow.open(map, this);
+            });
+
+} else {
+
+var favWF = (<%= raw @user.favorite_water_fountains.to_json %>);
+
+var favourited = false;
+for(k = 0; k < favWF.length; k++) {
+
+if(sid == favWF[k].id) {
+favourited = true;
+}
+}
+
+if(favourited) {
+
+            google.maps.event.addListener(marker, 'click', function(id) {
+              infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
+
+                '<row> <button onclick="get_info('+ this.id +')">Info</button> <button onclick="myFunction()">Tweet</button> <a rel="nofollow" data-method="delete" href="/favorite_water_fountains/'+this.id+'">Remove from favorites</a></row>');
+
+              infowindow.open(map, this);
+            });
+
+} else {
+
+            google.maps.event.addListener(marker, 'click', function(id) {
+              infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
+
+                '<row> <button onclick="get_info('+ this.id +')">Info</button> <button onclick="myFunction()">Tweet</button> <a rel="nofollow" data-method="post" href="/favorite_water_fountains?water_fountain_id='+this.id+'">Add to favorites</a></row>');
+
+
               infowindow.open(map, this);
               twttr.widgets.load();
               
@@ -130,6 +219,15 @@ var set_favorite = function(id){
                 }
                }(document, "script", "twitter-widgets");
               });
+
+}
+
+
+}
+
+
+
+
 
 	      	}
 	      }

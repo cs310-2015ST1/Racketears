@@ -41,7 +41,12 @@ class BikeRacksController < ApplicationController
 
   # first step
   def map
-  @bike_racks = BikeRack.all
+    @bike_racks = BikeRack.all
+    if (logged_in?)
+      @user = current_user
+    else
+      @user = User.new
+    end
   end
 
   def heatmap
@@ -70,9 +75,11 @@ class BikeRacksController < ApplicationController
 
     respond_to do |format|
       if @bike_rack.save
-        format.html { redirect_to @bike_rack, notice: 'Bike rack was successfully created.' }
+        flash[:success] = 'Bike rack was successfully created.'
+        format.html { redirect_to @bike_rack }
         format.json { render :show, status: :created, location: @bike_rack }
       else
+        flash[:danger] = 'There was a problem with creating Bike rack.'
         format.html { render :new }
         format.json { render json: @bike_rack.errors, status: :unprocessable_entity }
       end
@@ -84,9 +91,11 @@ class BikeRacksController < ApplicationController
   def update
     respond_to do |format|
       if @bike_rack.update(bike_rack_params)
-        format.html { redirect_to @bike_rack, notice: 'Bike rack was successfully updated.' }
+        flash[:success] = 'Bike rack was successfully updated.'
+        format.html { redirect_to @bike_rack }
         format.json { render :show, status: :ok, location: @bike_rack }
       else
+        flash[:danger] = 'There was a problem editing Bike rack.'
         format.html { render :edit }
         format.json { render json: @bike_rack.errors, status: :unprocessable_entity }
       end
@@ -98,7 +107,8 @@ class BikeRacksController < ApplicationController
   def destroy
     @bike_rack.destroy
     respond_to do |format|
-      format.html { redirect_to bike_racks_url, notice: 'Bike rack was successfully destroyed.' }
+      flash[:success] = 'Bike rack was successfully destroyed.'
+      format.html { redirect_to bike_racks_url }
       format.json { head :no_content }
     end
   end

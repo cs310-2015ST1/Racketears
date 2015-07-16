@@ -1,16 +1,8 @@
-<%= render 'shared/nav'%>
-
-<p id="notice"><%= notice %></p>
-
-<head>
-<style>
-.voffset4 { margin-top: 30px; }
-</style>
-</head>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-1"></div>
+
     <div class="col-xs-10">
       <div class="row">
         <div class="col-xs-2">        
@@ -46,9 +38,12 @@
               <td><%= water_fountain.lat %></td>
               <td><%= water_fountain.lon %></td>
               <td><%= link_to 'Show', water_fountain %>
-                <% if logged_in? && admin? %>
+                <% if logged_in? %>
+                  <% if admin? %>
                   <%= link_to 'Edit', edit_water_fountain_path(water_fountain) %>
                   <%= link_to 'Destroy', water_fountain, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+                  <% end %>               
                 <% end %>
               </td>
             </tr>
