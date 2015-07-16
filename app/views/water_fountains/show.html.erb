@@ -19,12 +19,13 @@
       </div>
       <div class="voffset2"></div>
       <div class="row">
-        
+<% if logged_in? %>        
 <%- unless current_user.favorite_water_fountains.exists?(id: @water_fountain.id) -%>
 <%= link_to 'Add to favorites', favorite_water_fountains_path(water_fountain_id: @water_fountain), method: :post %>
 <%- else -%>
 <%= link_to 'Remove from favorites', favorite_water_fountain_path(@water_fountain), method: :delete %>
 <%- end -%>
+<% end %>
 
       </div>
       <div class="voffset2"></div>
