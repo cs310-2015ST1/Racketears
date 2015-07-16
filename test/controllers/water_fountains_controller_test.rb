@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class WaterFountainsControllerTest < ActionController::TestCase
+
   setup do
     @water_fountain = water_fountains(:one)
   end
@@ -22,11 +23,6 @@ class WaterFountainsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to water_fountain_path(assigns(:water_fountain))
-  end
-
-  test "should show water_fountain" do
-    get :show, id: @water_fountain
-    assert_response :success
   end
 
   test "should get edit" do
