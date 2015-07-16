@@ -23,9 +23,11 @@ end
 test "name change" do
     
    
-  parseCSV(csvString)
+  csvArray = parseCSV(csvString)
   assert_instance_of( Array, csvArray, "not an Array!!!" )
-  assert_equals(1, 2)
+  assert_equal(1, 1)
+  assert_equal(7, BikeRack.count)
+  
   end
   
   

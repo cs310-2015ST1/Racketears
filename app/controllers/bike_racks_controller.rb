@@ -2,8 +2,9 @@ require 'open-uri'
 require 'csv'
 class BikeRacksController < ApplicationController
   before_action :set_bike_rack, only: [:show, :edit, :update, :destroy]
-  helper_method :populateBRData
   include BikeRacksHelper
+  helper_method :populateBRData
+  
  
   def populateBRData
 
