@@ -199,7 +199,7 @@ if(<%= !logged_in? %>) {
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
 
-                '<row> <button onclick="get_info('+ this.id +')">Info</button> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a>> <a href="/login">Add to favorites</a></row>');
+                '<row> <button onclick="get_info('+ this.id +')">Info</button> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <a href="/login">Add to favorites</a></row>');
 
               infowindow.open(map, this);
             });
