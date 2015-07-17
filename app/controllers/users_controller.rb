@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     def toggle_admin(user)
       admin_emails = ['bollain@gmail.com', 'ptranx23@gmail.com', 'seandibango@gmail.com
-                  ', 'r1ya3n@gmail.com']
+', 'r1ya3n@gmail.com']
       if (admin_emails.include? user.email)
         user.update_attribute :admin, true
       end
