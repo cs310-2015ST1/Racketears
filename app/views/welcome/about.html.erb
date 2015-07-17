@@ -2,6 +2,35 @@
 <head>
   <style>
 
+#paulIcon {
+
+ position: relative;
+ left: 45px;
+
+}
+
+#ryanIcon {
+
+ position: relative;
+
+ left: 15px;
+
+}
+
+#seanIcon {
+
+ position: relative;
+
+ left: 110px;
+}
+
+#armandoIcon {
+
+ position: relative;
+ top: -10px;
+ left: 45px;
+
+}
 
 h1 {
   text-align: center;
@@ -17,16 +46,21 @@ h1 {
 	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 	}
 .circular#paul {
-	background: url(http://i.imgur.com/sd64OhO.png) no-repeat;
+	background: url(http://i.imgur.com/YamCWXe.jpg) no-repeat;
+        background-position: 90%;
+        background-size: 100%;
 }
 .circular#sean {
-	background: url(http://i.imgur.com/tZGr6o8.png) no-repeat;
+	background: url(https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/11141343_10152972041516560_6259091969709120790_n.jpg?oh=2aeb2d3226c81b50c4ba5d9e6d78ee71&oe=565A6A26) no-repeat;
+        background-position: 20% 90%;
+        background-size: 100%;
 }
 .circular#ryan {
 	background: url(http://i.imgur.com/UyoEsSn.png) no-repeat;
 }
 .circular#armando {
-	background: url(http://i.imgur.com/N5sfvM4.png) no-repeat;
+	background: url(https://files.slack.com/files-pri/T063UM5B4-F07QU3AQY/pic.jpg) no-repeat;
+        background-size: 100%;
 }
 
 
@@ -36,12 +70,7 @@ h1 {
   box-sizing: border-box;
 }
 
-container#icon {
-  width: 25em;
-  margin: 0 auto 3em auto;
 
-  overflow: hidden;
-}
 
 .row {
   margin: 0.5em 0;
@@ -135,86 +164,110 @@ container#icon {
 
 <div class="container">
   <div class="voffset5"></div>
-  <div class="row">
 
     <div class="col-xs-3">
-      <div class="row">
+
         <center>
       <div class="circular" id="armando"></div>
         </center>
       <h1>Armando Bollain</h1>
-      </div>
+
       <div class="row">
 
-        <div class='container icon'>
-        <div class='row icon'><i class='icon-facebook' onclick="armandoFB()"></i><i class='icon-twitter' onclick="armandoTW()"></i></div>
+        <div class='row icon' id="armandoIcon">
+          <i class='icon-facebook' onclick="armandoFB()"></i>
+          <i class='icon-twitter' onclick="armandoTwitter()"></i>
+          <i class='icon-linkedin2' onclick="armandoLinkedIn()"></i>
         </div>
+
       </div>
     </div>
 
     <div class="col-xs-3">
-      <div class="row">
+
         <center>
       <div class="circular" id="sean"></div>
         </center>
+        <div class="voffset5"></div>
       <h1>Sean Blair</h1>
-      </div>
+
       <div class="row">
-        <div class='container icon'>
-        <div class='row icon'><i class='icon-facebook'></i></div>
+
+        <div class='row icon' id="seanIcon">
+          <i class='icon-facebook' onclick="seanFB()"></i>
+
         </div>
+
       </div>
     </div>
 
     <div class="col-xs-3">
-      <div class="row">
+
         <center>
       <div class="circular" id="paul"></div>
         </center>
+        <div class="voffset5"></div>
       <h1>Paul Tran</h1>
-      </div>
+
       <div class="row">
-        <div class='container icon'>
-        <div class='row icon'>
+
+        <div class='row icon' id="paulIcon">
           <i class='icon-facebook' onclick="paulFB()"></i>
+          <i class='icon-instagram' onclick="paulIG()"></i>
+          <i class='icon-network' onclick="paulWebsite()"></i>
         </div>
-        </div>
+
       </div>
     </div>
 
     <div class="col-xs-3">
-      <div class="row">
+
         <center>
       <div class="circular" id="ryan"></div>
         </center>
+        <div class="voffset5"></div>
       <h1>Ryan Hsu</h1>
-      </div>
+
       <div class="row">
-        <div class='container icon'>
-        <div class='row icon'><i class='icon-facebook'></i><i class='icon-twitter'></i><i class='icon-googleplus'></i><i class='icon-pinterest'></i></div>
+
+        <div class='row icon' id="ryanIcon">
+          <i class='icon-facebook'></i>
+          <i class='icon-twitter'></i>
+          <i class='icon-googleplus'></i>
+          <i class='icon-pinterest'></i></div>
         </div>
-      </div>
+
     </div>
-  </div>
+
 </div>
 
 
 <script>
-function armandoFB() {
-  window.open("http://www.facebook.com/");
-}
-function armandoTW() {
-  window.open("http://www.twitter.com/");
-}
 
 function paulWebsite() {
-  window.open("paultran.heroku.com");
+  window.open("http://paultran.heroku.com");
 }
 function paulFB() {
-  window.open("facebook.com");
+  window.open("http://www.facebook.com/PTx93");
 }
 function paulIG() {
-  window.open("instagram.com");
+  window.open("http://www.instagram.com/paultx23/");
+}
+function paulHockey() {
+  window.open("http://www.vihlwtt.stats.pointstreak.com/playerpage.html?playerid=8465076/");
+}
+function seanFB() {
+  window.open("https://www.facebook.com/seandibango");
+}
+function armandoFB() {
+  window.open("https://www.facebook.com/armando.bollain");
+}
+function armandoTwitter() {
+  window.open("https://twitter.com/bollain");
+}
+function armandoLinkedIn() {
+  window.open("https://ca.linkedin.com/pub/armando-bollain/17/a05/11a");
 }
 
 </script>
+
