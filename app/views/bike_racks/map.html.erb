@@ -20,6 +20,32 @@
    width: 100%;
  }
 
+.share-btn {
+    display: inline-block;
+    color: #ffffff;
+    border: none;
+    padding: 0.5em;
+    width: 4em;
+    box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+    outline: none;
+    text-align: center;
+}
+
+.share-btn:hover {
+  color: #eeeeee;
+}
+
+.share-btn:active {
+  position: relative;
+  top: 2px;
+  box-shadow: none;
+  color: #e2e2e2;
+  outline: none;
+}
+
+.share-btn.twitter {
+  background: #55acee; 
+}
 </style>
 </head>
 
@@ -104,10 +130,9 @@ var favBR = (<%=raw @user.favorite_bike_racks.to_json %>);
 
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Number of bike racks: ' + this.num.toString() + '</p>' + 
-                '<row> <button onclick="get_info('+ this.id +')">Show</button> <button onclick="myFunction()">Tweet</button> ' + 
 
-'<a rel="nofollow" data-method="delete" href="/favorite_bike_racks/'+this.id+'">Remove from favorites</a>' 
-+ '</row>');
+      '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" rel="nofollow" data-method="delete" href="/favorite_bike_racks/'+this.id+'">Remove from favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
+
               infowindow.open(map, this);
                                           
             });
@@ -139,6 +164,11 @@ function initialize() {
   
   
 }
+
+function myFunction() {
+  window.open("http://twitter.com/intent/tweet?url=www.h2go.com&text=Getting+hydrated+with+H2GO!&hashtags=quenched,H2GO","window name", "height=500,width=1000");
+}
+
 
 function computeDistance(pt1, pt2){
 	return google.maps.geometry.spherical.computeDistanceBetween(pt1, pt2);
@@ -197,7 +227,8 @@ var get_info = function(id){
 if(<%= !logged_in? %>) {
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Number of bike racks: ' + this.num.toString() + '</p>' +
-                '<row> <button onclick="get_info('+ this.id +')">Show</button> <button onclick="myFunction()">Tweet</button> <a href="/login">Add to favorites</a></row>');
+
+                '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" href="/login">Add to favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
               infowindow.open(map, this);            
             });
 } else {
@@ -217,7 +248,8 @@ if(favourited) {
 
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Number of bike racks: ' + this.num.toString() + '</p>' +
-                '<row> <button onclick="get_info('+ this.id +')">Show</button> <button onclick="myFunction()">Tweet</button> <a rel="nofollow" data-method="delete" href="/favorite_bike_racks/'+this.id+'">Remove from favorites</a></row>');
+
+                '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" rel="nofollow" data-method="delete" href="/favorite_bike_racks/'+this.id+'">Remove from favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
               infowindow.open(map, this);
                                           
             });
@@ -228,7 +260,9 @@ if(favourited) {
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Number of bike racks: ' + this.num.toString() + '</p>' +
 
-                '<row> <button onclick="get_info('+ this.id +')">Show</button> <button onclick="myFunction()">Tweet</button> <a rel="nofollow" data-method="post" href="/favorite_bike_racks?bike_rack_id='+this.id+'">Add to favorites</a></row>');
+                '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" rel="nofollow" data-method="post" href="/favorite_bike_racks?bike_rack_id='+this.id+'">Add to favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
+
+
               infowindow.open(map, this);
 
               
