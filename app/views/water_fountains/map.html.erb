@@ -28,13 +28,31 @@
   outline: none;
 }
 
-.share-btn.twitter     { background: #55acee; }
+.share-btn.twitter {
+  background: #55acee; 
+}
+
+#map-container {
+   height: 80vh;
+   border-radius: 16px 16px;
+   border-color: #fff;
+   border-style: solid;
+   box-shadow: 2px 2px 10px #B1B1B1;
+   margin-top: 20px;
+   border-width: 7px;
+ }
+ #map {
+   height: 100%;
+   width: 100%;
+ }
 </style>
 </head>
 
+<div class="container">
 <div class="row"><!-- input-group -->
   <div class="col-md-4"></div>
   <div class="col-md-5">
+
     <div div="panel">
       <div class="input-group">
       	<span class="input-group-btn">
@@ -50,10 +68,13 @@
     <button class="btn btn-default" type="button" onclick="showFavourites()">Show Favourites!</button>
   </div>
 </div>
+</div>
+
 
 <div id="map-container">
   <div id="map"></div>
 </div>
+
 
 <script>
 var geocoder;

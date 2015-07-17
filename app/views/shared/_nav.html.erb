@@ -1,3 +1,19 @@
+<head>
+  <style>
+ 
+.navbar-nav > li > a, .navbar-brand {
+  padding-top:15px !important; 
+  height: 43px;
+
+} 
+.navbar {
+  min-height:40px !important
+}
+
+
+  </style>
+</head>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -11,16 +27,15 @@
       <%= link_to root_path class: "navbar-brand" do %>
       <p class="navbar-brand" href="#">H2GO</p>
       <% end %>
+      
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
       <ul class="nav navbar-nav">
-        <li>
-          <%= link_to aboutpage_path class: "about-button" do %>
-          <p class="about-button" href="#">About</p>
-          <% end %>
-        </li>
+        <li><a href="/aboutpage">About</a></li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Water Fountains <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
