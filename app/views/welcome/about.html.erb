@@ -1,0 +1,220 @@
+
+<head>
+  <style>
+
+
+h1 {
+  text-align: center;
+}
+    .circular {
+	width: 30vh;
+        height: 30vh;
+	border-radius: 15vh;
+	-webkit-border-radius: 15vh;
+    -moz-border-radius: 15vh;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}
+.circular#paul {
+	background: url(http://i.imgur.com/sd64OhO.png) no-repeat;
+}
+.circular#sean {
+	background: url(http://i.imgur.com/tZGr6o8.png) no-repeat;
+}
+.circular#ryan {
+	background: url(http://i.imgur.com/UyoEsSn.png) no-repeat;
+}
+.circular#armando {
+	background: url(http://i.imgur.com/N5sfvM4.png) no-repeat;
+}
+
+
+*, *:after, *:before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+container#icon {
+  width: 25em;
+  margin: 0 auto 3em auto;
+
+  overflow: hidden;
+}
+
+.row {
+  margin: 0.5em 0;
+  float: left;
+  clear: both;
+}
+.row i {
+  cursor: pointer;
+  display: inline-block;
+  -moz-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+.row:first-child {
+  background: #f8f8f8;
+  padding: 0.5em 0;
+  border-radius: 8px;
+  -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+.row:first-child i {
+  border-right: 1px solid #e8e8e8;
+  border-left: 1px solid #fff;
+  padding: 0.5em 1em;
+  margin: 0;
+  text-shadow: 1px 1px 0 white;
+}
+.row:first-child i:hover {
+  color: #34495e !important;
+}
+
+.row:nth-child(1) {
+  background: transparent;
+}
+.row:nth-child(1) i {
+  color: white;
+  padding: 1em;
+  position: relative;
+  background: transparent;
+}
+.row:nth-child(1) i:hover {
+  border-radius: 50%;
+}
+.row:nth-child(1) i:not(:first-child) {
+  margin-left: 1em;
+}
+.row:nth-child(1) i:nth-child(1) {
+  color: #3b5998;
+  border: 2px solid #3b5998;
+}
+.row:nth-child(1) i:nth-child(1):hover {
+  color: white;
+  background: #3b5998;
+}
+.row:nth-child(1) i:nth-child(2) {
+  color: #00a0d1;
+  border: 2px solid #00a0d1;
+}
+.row:nth-child(1) i:nth-child(2):hover {
+  color: white;
+  background: #00a0d1;
+}
+.row:nth-child(1) i:nth-child(3) {
+  color: #db4a39;
+  border: 2px solid #db4a39;
+}
+.row:nth-child(1) i:nth-child(3):hover {
+  color: white;
+  background: #db4a39;
+}
+.row:nth-child(1) i:nth-child(4) {
+  color: #c8232c;
+  border: 2px solid #c8232c;
+}
+.row:nth-child(1) i:nth-child(4):hover {
+  color: white;
+  background: #c8232c;
+}
+.row:nth-child(1) i:nth-child(5) {
+  color: #ea4c89;
+  border: 2px solid #ea4c89;
+}
+.row:nth-child(1) i:nth-child(5):hover {
+  color: white;
+  background: #ea4c89;
+}
+
+  </style>
+</head>
+
+
+<div class="container">
+  <div class="voffset5"></div>
+  <div class="row">
+
+    <div class="col-xs-3">
+      <div class="row">
+        <center>
+      <div class="circular" id="armando"></div>
+        </center>
+      <h1>Armando Bollain</h1>
+      </div>
+      <div class="row">
+
+        <div class='container icon'>
+        <div class='row icon'><i class='icon-facebook' onclick="armandoFB()"></i><i class='icon-twitter' onclick="armandoTW()"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+      <div class="row">
+        <center>
+      <div class="circular" id="sean"></div>
+        </center>
+      <h1>Sean Blair</h1>
+      </div>
+      <div class="row">
+        <div class='container icon'>
+        <div class='row icon'><i class='icon-facebook'></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+      <div class="row">
+        <center>
+      <div class="circular" id="paul"></div>
+        </center>
+      <h1>Paul Tran</h1>
+      </div>
+      <div class="row">
+        <div class='container icon'>
+        <div class='row icon'>
+          <i class='icon-facebook' onclick="paulFB()"></i>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+      <div class="row">
+        <center>
+      <div class="circular" id="ryan"></div>
+        </center>
+      <h1>Ryan Hsu</h1>
+      </div>
+      <div class="row">
+        <div class='container icon'>
+        <div class='row icon'><i class='icon-facebook'></i><i class='icon-twitter'></i><i class='icon-googleplus'></i><i class='icon-pinterest'></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function armandoFB() {
+  window.open("http://www.facebook.com/");
+}
+function armandoTW() {
+  window.open("http://www.twitter.com/");
+}
+
+function paulWebsite() {
+  window.open("paultran.heroku.com");
+}
+function paulFB() {
+  window.open("facebook.com");
+}
+function paulIG() {
+  window.open("instagram.com");
+}
+
+</script>
