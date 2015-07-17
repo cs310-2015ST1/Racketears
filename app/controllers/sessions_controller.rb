@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
   		log_in user
   		if admin?
   			flash[:success] = "Signed in as admin!!"
+                else
+                  flash[:success] = "Signed in successful"
   		end
   		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
   		remember user

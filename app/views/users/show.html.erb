@@ -1,5 +1,9 @@
 <head>
   <style>
+
+#center {
+ text-align: center;
+}
     h1 {
   font-size: 3em;
   letter-spacing: -2px;
@@ -52,22 +56,26 @@ window.location.href="/login";
 
 
 <% provide(:title, @user.name) %>
+<div class="container">
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+  <div class="col-xs-5"></div>
+  <div class="col-xs-1">
+<%= gravatar_for @user %>
+  </div>
+  <div class="col-xs-1">
+<h1>    <%= @user.name %> </h1>
+  </div>
+  <div class="col-xs-5"></div>
+</div>
   <% if admin? %>
-  	<h2>You are logged in as an admin!<h2>
+  <div class="row">
+  	<h2 id="center">You are logged in as an admin!<h2>
+  </div>
   <% end %>
 </div>
 
 
-<div class="container">
+
   <div class="row">
     <h1>Favorite Amenities</h1>
   </div>
