@@ -28,13 +28,31 @@
   outline: none;
 }
 
-.share-btn.twitter     { background: #55acee; }
+.share-btn.twitter {
+  background: #55acee; 
+}
+
+#map-container {
+   height: 80vh;
+   border-radius: 16px 16px;
+   border-color: #fff;
+   border-style: solid;
+   box-shadow: 2px 2px 10px #B1B1B1;
+   margin-top: 20px;
+   border-width: 7px;
+ }
+ #map {
+   height: 100%;
+   width: 100%;
+ }
 </style>
 </head>
 
+<div class="container">
 <div class="row"><!-- input-group -->
   <div class="col-md-4"></div>
   <div class="col-md-5">
+
     <div div="panel">
       <div class="input-group">
       	<span class="input-group-btn">
@@ -50,10 +68,13 @@
     <button class="btn btn-default" type="button" onclick="showFavourites()">Show Favourites!</button>
   </div>
 </div>
+</div>
+
 
 <div id="map-container">
   <div id="map"></div>
 </div>
+
 
 <script>
 var geocoder;
@@ -105,9 +126,11 @@ geocoder.geocode( { 'address': "300 homer st Vancouver"}, function(results, stat
 
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
-                '<row> <button onclick="get_info('+ this.id +')">Show</button> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <a rel="nofollow" data-method="delete" href="/favorite_water_fountains/'+this.id+'">Remove from favorites</a></row>');
+      '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" rel="nofollow" data-method="delete" href="/favorite_water_fountains/'+this.id+'">Remove from favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
+
               infowindow.open(map, this);
             });
+
 
 	      	
 	      }
@@ -156,11 +179,7 @@ function computeDistance(pt1, pt2){
 
 //The following function is to favourite water fountains
 var get_info = function(id){
-  if(<%= logged_in? %>){
     window.location.href="/water_fountains/"+id;
-  } else {
-    window.location.href="/signup";
-  }
 };
 
 //The following js functions are based on the Google Maps API Samples
@@ -199,7 +218,8 @@ if(<%= !logged_in? %>) {
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
 
-                '<row> <button onclick="get_info('+ this.id +')">Info</button> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <a href="/login">Add to favorites</a></row>');
+                '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" href="/login">Add to favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
+
 
               infowindow.open(map, this);
             });
@@ -221,7 +241,7 @@ if(favourited) {
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
 
-                '<row> <button onclick="get_info('+ this.id +')">Info</button> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <a rel="nofollow" data-method="delete" href="/favorite_water_fountains/'+this.id+'">Remove from favorites</a></row>');
+                '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" rel="nofollow" data-method="delete" href="/favorite_water_fountains/'+this.id+'">Remove from favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
 
               infowindow.open(map, this);
             });
@@ -231,7 +251,7 @@ if(favourited) {
             google.maps.event.addListener(marker, 'click', function(id) {
               infowindow.setContent('<p>Fountain Location: '+ this.info +'</p>' +
 
-                '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" rel="nofollow" data-method="post" href="/favorite_water_fountains?water_fountain_id='+this.id+'">Add to favorites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
+                '<row> <button class="btn btn-default" onclick="get_info('+ this.id +')">Info</button>  <a class="btn btn-default" rel="nofollow" data-method="post" href="/favorite_water_fountains?water_fountain_id='+this.id+'">Add to favourites</a> <br> <div class="voffset2"></div> <a onclick="myFunction()" target="_blank" class="share-btn twitter"> <i class="fa fa-twitter"></i></a> <br> </row>');
 
 
               infowindow.open(map, this);
@@ -257,7 +277,7 @@ if(favourited) {
 	      }
 
 	  } else {
-	  	alert("Sorry, we don't cover this area.... yet!");
+	  	alert("Are you sure your search is in Vancouver? (Try adding 'Vancouver' to your search)");
 	  }
     } else {
       alert('Geocode was not successful for the following reason: ' + status);

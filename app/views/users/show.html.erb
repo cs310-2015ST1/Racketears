@@ -1,3 +1,52 @@
+<head>
+  <style>
+
+#center {
+ text-align: center;
+}
+    h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+  </style>
+</head>
+
 
 <% if !logged_in? %>
 <script>
@@ -7,22 +56,26 @@ window.location.href="/login";
 
 
 <% provide(:title, @user.name) %>
+<div class="container">
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+  <div class="col-xs-5"></div>
+  <div class="col-xs-1">
+<%= gravatar_for @user %>
+  </div>
+  <div class="col-xs-1">
+<h1>    <%= @user.name %> </h1>
+  </div>
+  <div class="col-xs-5"></div>
+</div>
   <% if admin? %>
-  	<h2>You are logged in as an admin!<h2>
+  <div class="row">
+  	<h2 id="center">You are logged in as an admin!<h2>
+  </div>
   <% end %>
 </div>
 
 
-<div class="container">
+
   <div class="row">
     <h1>Favorite Amenities</h1>
   </div>

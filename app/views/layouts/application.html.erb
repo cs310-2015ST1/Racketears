@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+<style>
+#test {
+  position: relative;
+  top: -20px;
+}
+</style>
   <title>H2GO</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,12 +15,15 @@
 </head>
 <body>
 
+
 <%= render 'shared/nav'%>
 
-
+<div id="test">
 <% flash.each do |name, msg| -%>
 <%= content_tag :div, msg, class: "alert alert-#{name}" %>
 <% end -%>
+</div>
+
 
 <%= yield %>
 

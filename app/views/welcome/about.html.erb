@@ -1,0 +1,274 @@
+
+<head>
+  <style>
+
+#paulIcon {
+
+ position: relative;
+ left: 45px;
+
+}
+
+#ryanIcon {
+
+ position: relative;
+
+ left: 110px;
+
+}
+
+#seanIcon {
+
+ position: relative;
+
+ left: 110px;
+}
+
+#armandoIcon {
+
+ position: relative;
+ top: -10px;
+ left: 45px;
+
+}
+
+h1 {
+  text-align: center;
+}
+    .circular {
+	width: 30vh;
+        height: 30vh;
+	border-radius: 15vh;
+	-webkit-border-radius: 15vh;
+    -moz-border-radius: 15vh;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}
+.circular#paul {
+	background: url(http://i.imgur.com/YamCWXe.jpg) no-repeat;
+        background-position: 90%;
+        background-size: 100%;
+}
+.circular#sean {
+	background: url(https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/11141343_10152972041516560_6259091969709120790_n.jpg?oh=2aeb2d3226c81b50c4ba5d9e6d78ee71&oe=565A6A26) no-repeat;
+        background-position: 20% 90%;
+        background-size: 100%;
+}
+.circular#ryan {
+	background: url(https://scontent.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10629825_10202777171454301_4199704578944386853_n.jpg?oh=1dc2a5d71039c39af22636810a042e6a&oe=5622AE76) no-repeat;
+        background-size: 100%;
+}
+.circular#armando {
+	background: url(https://scontent.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/185100_10151112737783073_1803937796_n.jpg?oh=0bb13ad31f2d95df78730484fe055019&oe=56212191) no-repeat;
+        background-size: 100%;
+}
+
+
+*, *:after, *:before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+.row {
+  margin: 0.5em 0;
+  float: left;
+  clear: both;
+}
+.row i {
+  cursor: pointer;
+  display: inline-block;
+  -moz-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+.row:first-child {
+  background: #f8f8f8;
+  padding: 0.5em 0;
+  border-radius: 8px;
+  -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+.row:first-child i {
+  border-right: 1px solid #e8e8e8;
+  border-left: 1px solid #fff;
+  padding: 0.5em 1em;
+  margin: 0;
+  text-shadow: 1px 1px 0 white;
+}
+.row:first-child i:hover {
+  color: #34495e !important;
+}
+
+.row:nth-child(1) {
+  background: transparent;
+}
+.row:nth-child(1) i {
+  color: white;
+  padding: 1em;
+  position: relative;
+  background: transparent;
+}
+.row:nth-child(1) i:hover {
+  border-radius: 50%;
+}
+.row:nth-child(1) i:not(:first-child) {
+  margin-left: 1em;
+}
+.row:nth-child(1) i:nth-child(1) {
+  color: #3b5998;
+  border: 2px solid #3b5998;
+}
+.row:nth-child(1) i:nth-child(1):hover {
+  color: white;
+  background: #3b5998;
+}
+.row:nth-child(1) i:nth-child(2) {
+  color: #00a0d1;
+  border: 2px solid #00a0d1;
+}
+.row:nth-child(1) i:nth-child(2):hover {
+  color: white;
+  background: #00a0d1;
+}
+.row:nth-child(1) i:nth-child(3) {
+  color: #db4a39;
+  border: 2px solid #db4a39;
+}
+.row:nth-child(1) i:nth-child(3):hover {
+  color: white;
+  background: #db4a39;
+}
+.row:nth-child(1) i:nth-child(4) {
+  color: #c8232c;
+  border: 2px solid #c8232c;
+}
+.row:nth-child(1) i:nth-child(4):hover {
+  color: white;
+  background: #c8232c;
+}
+.row:nth-child(1) i:nth-child(5) {
+  color: #ea4c89;
+  border: 2px solid #ea4c89;
+}
+.row:nth-child(1) i:nth-child(5):hover {
+  color: white;
+  background: #ea4c89;
+}
+
+  </style>
+</head>
+
+
+<div class="container">
+  <div class="voffset5"></div>
+
+    <div class="col-xs-3">
+
+        <center>
+      <div class="circular" id="armando"></div>
+        </center>
+      <h1>Armando Bollain</h1>
+
+      <div class="row">
+
+        <div class='row icon' id="armandoIcon">
+          <i class='icon-facebook' onclick="armandoFB()"></i>
+          <i class='icon-twitter' onclick="armandoTwitter()"></i>
+          <i class='icon-linkedin2' onclick="armandoLinkedIn()"></i>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+
+        <center>
+      <div class="circular" id="sean"></div>
+        </center>
+        <div class="voffset5"></div>
+      <h1>Sean Blair</h1>
+
+      <div class="row">
+
+        <div class='row icon' id="seanIcon">
+          <i class='icon-facebook' onclick="seanFB()"></i>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+
+        <center>
+      <div class="circular" id="paul"></div>
+        </center>
+        <div class="voffset5"></div>
+      <h1>Paul Tran</h1>
+
+      <div class="row">
+
+        <div class='row icon' id="paulIcon">
+          <i class='icon-facebook' onclick="paulFB()"></i>
+          <i class='icon-instagram' onclick="paulIG()"></i>
+          <i class='icon-network' onclick="paulWebsite()"></i>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+
+        <center>
+      <div class="circular" id="ryan"></div>
+        </center>
+        <div class="voffset5"></div>
+      <h1>Ryan Hsu</h1>
+
+      <div class="row">
+
+        <div class='row icon' id="ryanIcon">
+          <i class='icon-facebook' onclick="ryanFB()"></i>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function paulWebsite() {
+  window.open("http://paultran.heroku.com");
+}
+function paulFB() {
+  window.open("http://www.facebook.com/PTx93");
+}
+function paulIG() {
+  window.open("http://www.instagram.com/paultx23/");
+}
+function paulHockey() {
+  window.open("http://www.vihlwtt.stats.pointstreak.com/playerpage.html?playerid=8465076/");
+}
+function seanFB() {
+  window.open("https://www.facebook.com/seandibango");
+}
+function armandoFB() {
+  window.open("https://www.facebook.com/armando.bollain");
+}
+function armandoTwitter() {
+  window.open("https://twitter.com/bollain");
+}
+function armandoLinkedIn() {
+  window.open("https://ca.linkedin.com/pub/armando-bollain/17/a05/11a");
+}
+function ryanFB() {
+  window.open("https://www.facebook.com/ryan.hsu.140");
+}
+
+</script>
+

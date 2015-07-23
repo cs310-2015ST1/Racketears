@@ -5,23 +5,25 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version  2.2.1p85
+
+* Rails version: 4.2.1
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+* Database creation   "rake db:create" in terminal (head project folder)
 
-* Database initialization
+* Database initialization "rake db:migrate"
 
-* How to run the test suite
+* How to run the test suite: in head directory of project run the command "rake test" in a terminal
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Deployment instructions : terminal (head proyect directory) "rails server"  Must have ruby on rails installed
 
-* ...
+* Link to deployed app:  H2go.heroku.com
 
 
 Please feel free to use a different markup language if you do not plan to run
