@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * Deployment instructions : terminal (head proyect directory) "rails server"  Must have ruby on rails installed
 
-* ...
+* Link to deployed app:  H2go.heroku.com
 
 
 Please feel free to use a different markup language if you do not plan to run
