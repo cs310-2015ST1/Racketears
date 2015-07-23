@@ -1,9 +1,3 @@
 # Racketears
-# Paul was here
-
-# Armando was here
-
-# Ryan was here
-
-# Sean was here
+# H2G0 Live site at: www.h2go.herokuapp.com:
 
